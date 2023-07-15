@@ -1,0 +1,3 @@
+rootProject.name = 'MSApp'
+include 'users'
+include 'antifraud'

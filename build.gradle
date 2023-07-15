@@ -1,0 +1,76 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.6'
+    id 'io.spring.dependency-management' version '1.1.0'
+    id 'jacoco'
+    id 'org.sonarqube' version '4.0.0.2929'
+}
+
+allprojects {
+    println "Working with ${project.name}"
+
+    group 'com.decode.msapp'
+    version '1.0-SNAPSHOT'
+    java.sourceCompatibility(JavaVersion.VERSION_17)
+
+    repositories {
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'jacoco'
+    apply plugin: 'org.sonarqube'
+
+    configurations {
+        compileOnly.extendsFrom annotationProcessor
+        testCompileOnly.extendsFrom annotaionProcessor
+        testAnnotationProcessor.extendsFrom annotaionProcessor
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        implementation 'org.springframework.boot:spring-boot-starter-validation'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        implementation 'org.flywaydb:flyway-core'
+        implementation 'org.projectlombok:lombok:1.18.26'
+        runtimeOnly 'org.postgresql:postgresql'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        //Lombok
+        compileOnly 'org.projectlombok:lombok:1.18.26'
+        annotationProcessor 'org.projectlombok:lombok:1.18.26'
+        testCompileOnly 'org.projectlombok:lombok:1.18.26'
+        testAnnotationProcessor 'org.projectlombok:lombok:1.18.26'
+        //Testcontainers
+        implementation platform('org.testcontainers:testcontainers-bom:1.18.3')
+        testImplementation 'org.testcontainers:junit-jupiter'
+        testImplementation 'org.testcontainers:postgresql'
+        //Telemetry
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+        implementation 'io.micrometer:micrometer-registry-prometheus:1.11.0' //metrics
+        implementation 'io.micrometer:micrometer-tracing-bridge-otel'
+        implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}
+
+configure([project(':users')]) {
+        dependencies {
+            implementation 'org.springframework.boot:spring-boot-starter-security'
+            implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+            implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+            testImplementation 'org.springframework.security:spring-security-test'
+       }
+}
+
+
+
+

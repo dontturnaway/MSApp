@@ -1,0 +1,87 @@
+#PVC for Postgres, dynamically provisioned by cluster
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: {{ .Values.appname }}-postgres-claim # name of PVC essential for identifying the storage data
+  namespace: {{ .Values.namespacename }}
+  labels:
+    app: {{ .Values.dbname }}
+    tier: database
+spec:
+  accessModes:
+    - ReadWriteOnce   #Sets the mode of the claim
+  resources:
+    requests:
+      storage: 1Gi    #Amount of space we are trying to claim.
+---
+#Deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.dbname }}
+  namespace: {{ .Values.namespacename }}
+  labels:
+    app: {{ .Values.dbname }}
+    tier: database
+spec:
+  replicas: 1
+  selector: # DB's pod should contain same labels
+    matchLabels:
+      app: {{ .Values.dbname }}
+  strategy:
+    type: Recreate    
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.dbname }}
+        tier: database
+    spec:
+      containers:
+      - name: {{ .Values.dbname }}
+        image: postgres:15.2 #image from docker-hub
+        args: #should be provided there if needed
+
+        env: #Environment variables
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef: #From secret
+              name: myapp-postgres-secret
+              key: postgres-root-username
+        - name: POSTGRES_PASSWORD
+          valueFrom: 
+            secretKeyRef: #From secret
+              name: myapp-postgres-secret
+              key: postgres-root-password
+        - name: POSTGRES_DB
+          #value: dev 
+          valueFrom: #using db chema name from configmap
+            configMapKeyRef:
+              name: {{ .Values.dbconfigmap.name }}
+              key: database_url
+
+        ports:
+        - containerPort: 5432
+          name: {{ .Values.dbname }}
+
+        volumeMounts:  # Mounting voulume obtained from PVC
+            - name: {{ .Values.appname }}-postgres-storage
+              mountPath: /var/lib/postgresql/data #This is the path in the container on which the mounting will take place.
+      volumes:
+        - name: {{ .Values.appname }}-postgres-storage # Obtaining 'volume' from PVC
+          persistentVolumeClaim:
+            claimName: {{ .Values.appname }}-postgres-claim  
+---
+#Postgres Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.dbname }}
+  namespace: {{ .Values.namespacename }}
+spec:
+  selector: # postgres Pod Should contain same labels
+    app: {{ .Values.dbname }}
+    tier: database
+  ports:
+    - protocol: TCP
+      port: 5432
+      targetPort: 5432

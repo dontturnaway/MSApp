@@ -1,0 +1,40 @@
+#Application deployment
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appname }}
+  namespace: {{ .Values.namespacename }}
+  labels:
+    app: {{ .Values.appname }}
+spec:
+  replicas: 1 #num of instances
+  selector:
+    matchLabels:
+      app: {{ .Values.appname }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.appname }}
+    spec:
+      containers:
+      - name: {{ .Values.appname }}
+        image: deem0ne/myapp:tagname #:1 - version
+        #imagePullPolicy: Never #pulling from local PC
+        ports:
+        - containerPort: 8080
+---
+#Application Service
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.appname }}
+  namespace: {{ .Values.namespacename }}
+spec:
+  selector:
+    app: {{ .Values.appname }}  
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: 30000
+  type: LoadBalancer # type of the service.

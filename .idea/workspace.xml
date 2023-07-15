@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b6c94671-b3a6-4bc4-a1d4-2718a2683fe7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Readme.MD" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/antifraud/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/antifraud/src/main/java/com/decode/msapp/fraud/FraudApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/antifraud/src/main/java/com/decode/msapp/fraud/FraudCheckRESTController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/antifraud/src/main/java/com/decode/msapp/fraud/FraudCheckService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/antifraud/src/main/resources/application-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/antifraud/src/main/resources/application-prod.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/antifraud/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cicd/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cicd/Jenkinsfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cicd/helmchart/Chart.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cicd/helmchart/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cicd/helmchart/templates/NOTES.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cicd/helmchart/templates/app.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cicd/helmchart/templates/db-configmap.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cicd/helmchart/templates/db-secret.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cicd/helmchart/templates/db.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cicd/helmchart/templates/namespace.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cicd/helmchart/values-dev.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cicd/helmchart/values.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.0.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.1.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.10.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.11.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.12.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.13.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.14.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.15.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.16.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.17.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.2.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.3.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.4.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.5.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.6.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.7.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.8.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/logs/mytest.log.2023-07-15.9.log" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/DTO/FraudCheckResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/DTO/PersonDTO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/UsersApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/config/OtlpConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/config/RestTempate.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/config/SecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/controllers/AuthController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/controllers/IndexController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/controllers/MicroserviceTestController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/controllers/PeopleMicroserviceController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/controllers/PeopleRESTController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/controllers/PeopleWebController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/exception/CantCreateUserExeption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/models/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/repositories/PeopleRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/security/PersonDetails.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/services/AdminService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/services/PeopleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/services/PersonDetailsService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/services/RegistrationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/java/com/decode/msapp/users/util/PersonValidator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/application-dev.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/application-prod.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/application.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/banner.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/db/migration/V1__Init_DB.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/db/migration/V2__Fill_DB.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/db/migration/V3__Fill_DB.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/templates/admin.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/templates/auth/login.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/templates/auth/registration.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/templates/hello.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/templates/people/edit.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/templates/people/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/templates/people/new.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/templates/people/show.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/main/resources/templates/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/test/java/com/decode/msapp/users/UsersApplicationTestsIntegration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/test/java/com/decode/msapp/users/UsersApplicationTestsUnit.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/src/test/java/com/decode/msapp/users/UsersApplicationTestsUnitParams.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$/antifraud">
+          <activation />
+        </task>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="MSApp" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="KubernetesApiPersistence">
+    <option name="context" value="docker-desktop" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2SZoCevtJrQK0UFcWIwzY6w0yJ9" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "jdk.selected.JAVA_MODULE": "17",
+    "last_opened_file_path": "/Users/Rage/IdeaProjects/Learn/MSApp",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "spring.configuration.checksum": "4c30a4ebd2e479c5ed41f34305eef6ed"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/cicd" />
+      <recent name="$PROJECT_DIR$/antifraud/src/main/resources" />
+      <recent name="$PROJECT_DIR$/antifraud/src/main/java" />
+      <recent name="$PROJECT_DIR$/users/src/main/resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/users/src/test/java/com/decode/users" />
+      <recent name="$PROJECT_DIR$/users/src/test" />
+      <recent name="$PROJECT_DIR$/users/src/main/resources/db" />
+      <recent name="$PROJECT_DIR$/users/src/main/resources" />
+    </key>
+  </component>
+  <component name="RunAnythingCache">
+    <option name="myCommands">
+      <command value="gradle hello" />
+      <command value="gradle projects" />
+    </option>
+  </component>
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.UsersApplication">
+    <configuration name="MSApp [hello]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="hello" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="MSApp [projects]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="projects" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="FraudApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <module name="MSApp.antifraud.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.decode.msapp.fraud.FraudApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UsersApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <module name="MSApp.users.main" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.decode.msapp.users.UsersApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.MSApp [hello]" />
+      <item itemvalue="Gradle.MSApp [projects]" />
+      <item itemvalue="Spring Boot.FraudApplication" />
+      <item itemvalue="Spring Boot.UsersApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.MSApp [projects]" />
+        <item itemvalue="Gradle.MSApp [hello]" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b6c94671-b3a6-4bc4-a1d4-2718a2683fe7" name="Changes" comment="" />
+      <created>1689363339288</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1689363339288</updated>
+      <workItem from="1689363342336" duration="260000" />
+      <workItem from="1689363614869" duration="24000" />
+      <workItem from="1689363659424" duration="609000" />
+      <workItem from="1689364730382" duration="1354000" />
+      <workItem from="1689366704727" duration="8768000" />
+      <workItem from="1689422914927" duration="17000" />
+      <workItem from="1689431318988" duration="46000" />
+      <workItem from="1689433764952" duration="14874000" />
+      <workItem from="1689450489727" duration="148000" />
+      <workItem from="1689451726294" duration="2101000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>

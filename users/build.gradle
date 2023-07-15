@@ -1,0 +1,3 @@
+//helps to prevent some exception
+//use for the lib you want to export to other module
+jar.enabled = true

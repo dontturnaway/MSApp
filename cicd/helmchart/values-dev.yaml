@@ -1,0 +1,8 @@
+#done as dummy for deployment on other type environments
+appname: myappdb
+dbname: postgres
+dbschema: dev
+namespacename: myapp
+dbconfigmap:
+  name: postgres
+  dbname: dev

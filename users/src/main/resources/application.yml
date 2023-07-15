@@ -1,0 +1,66 @@
+server:
+    port: 8080
+spring:
+  application:
+    name: msapp-users
+  profiles:
+    active: prod
+  jpa:
+    properties:
+      hibernate:
+        ddl-auto: none
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        show_sql: true
+    show-sql: true
+  datasource:
+    driverClassName: org.postgresql.Driver
+    #applied in profiles
+    #url: jdbc:postgresql://postgres:5432/dev
+    #username: dev
+    #password: dev
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    #defaultSchema: dev
+    #user: dev
+    #password: dev
+#logging section
+logging:
+  file:
+    name: ./logs/mytest.log
+  #level:
+    #root: "INFO"
+    #org.springframework: "INFO"
+    #com.test.myapp.controllers: "ERROR"
+  #pattern:
+    #console : "[%d{yy-MM-dd HH:mm:ss:SSS}][%-5p][%c][%t]%m%n"
+    #file : "[%d{yy-MM-dd HH:mm:ss:SSS}][%-5p][%c][%t]%m%n" #file is zipped
+  #jaeger
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"
+  #/jaeger
+  logback:
+    rollingpolicy:
+      max-history : 1 #num of days
+      max-file-size : 10KB
+      file-name-pattern : "${LOG_FILE}.%d{yyyy-MM-dd}.%i.log"
+#metrics section
+management:
+#  server:  #in case if override is needed
+#    port: 8080
+  endpoints:
+    web:
+      base-path: "/" #instead "actuator/"
+      path-mapping:
+        prometheus: "metrics"
+      exposure:
+        include: "prometheus" #only prometheus endpoint is active
+  endpoint:
+    health:
+      show-details: always
+  tracing:  #jaeger
+    sampling:
+      probability: 1.0
+tracing: #jaeger
+  url: http://localhost:4318/v1/traces

@@ -1,0 +1,67 @@
+2023-07-15T23:44:12.936+04:00  INFO [msapp-antifraud,,] 27937 --- [main] c.decode.msapp.fraud.FraudApplication    : Starting FraudApplication using Java 17.0.2 with PID 27937 (/Users/Rage/IdeaProjects/Learn/MSApp/antifraud/build/classes/java/main started by Rage in /Users/Rage/IdeaProjects/Learn/MSApp)
+2023-07-15T23:44:12.938+04:00  INFO [msapp-antifraud,,] 27937 --- [main] c.decode.msapp.fraud.FraudApplication    : The following 1 profile is active: "dev"
+2023-07-15T23:44:13.289+04:00  INFO [msapp-users,,] 27938 --- [main] c.decode.msapp.users.UsersApplication    : Starting UsersApplication using Java 17.0.2 with PID 27938 (/Users/Rage/IdeaProjects/Learn/MSApp/users/build/classes/java/main started by Rage in /Users/Rage/IdeaProjects/Learn/MSApp)
+2023-07-15T23:44:13.290+04:00  INFO [msapp-users,,] 27938 --- [main] c.decode.msapp.users.UsersApplication    : The following 1 profile is active: "dev"
+2023-07-15T23:44:13.355+04:00  INFO [msapp-antifraud,,] 27937 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-15T23:44:13.356+04:00  INFO [msapp-antifraud,,] 27937 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-15T23:44:13.366+04:00  INFO [msapp-antifraud,,] 27937 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JDBC repository interfaces.
+2023-07-15T23:44:13.370+04:00  INFO [msapp-antifraud,,] 27937 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-15T23:44:13.370+04:00  INFO [msapp-antifraud,,] 27937 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-15T23:44:13.373+04:00  INFO [msapp-antifraud,,] 27937 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 0 ms. Found 0 JPA repository interfaces.
+2023-07-15T23:44:13.572+04:00  INFO [msapp-antifraud,,] 27937 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8081 (http)
+2023-07-15T23:44:13.576+04:00  INFO [msapp-antifraud,,] 27937 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-15T23:44:13.576+04:00  INFO [msapp-antifraud,,] 27937 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-15T23:44:13.619+04:00  INFO [msapp-antifraud,,] 27937 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-15T23:44:13.620+04:00  INFO [msapp-antifraud,,] 27937 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 656 ms
+2023-07-15T23:44:13.731+04:00  INFO [msapp-users,,] 27938 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-15T23:44:13.732+04:00  INFO [msapp-users,,] 27938 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2023-07-15T23:44:13.749+04:00  INFO [msapp-users,,] 27938 --- [main] .RepositoryConfigurationExtensionSupport : Spring Data JDBC - Could not safely identify store assignment for repository candidate interface com.decode.msapp.users.repositories.PeopleRepository; If you want this repository to be a JDBC repository, consider annotating your entities with one of these annotations: org.springframework.data.relational.core.mapping.Table.
+2023-07-15T23:44:13.750+04:00  INFO [msapp-users,,] 27938 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 15 ms. Found 0 JDBC repository interfaces.
+2023-07-15T23:44:13.755+04:00  INFO [msapp-users,,] 27938 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Multiple Spring Data modules found, entering strict repository configuration mode
+2023-07-15T23:44:13.755+04:00  INFO [msapp-users,,] 27938 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-07-15T23:44:13.775+04:00  INFO [msapp-users,,] 27938 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 17 ms. Found 1 JPA repository interfaces.
+2023-07-15T23:44:13.778+04:00  INFO [msapp-antifraud,,] 27937 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-15T23:44:13.893+04:00  INFO [msapp-antifraud,,] 27937 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@443a06ad
+2023-07-15T23:44:13.894+04:00  INFO [msapp-antifraud,,] 27937 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-15T23:44:13.912+04:00  INFO [msapp-antifraud,,] 27937 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-15T23:44:13.930+04:00  INFO [msapp-antifraud,,] 27937 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-07-15T23:44:14.038+04:00  INFO [msapp-antifraud,,] 27937 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-07-15T23:44:14.072+04:00  INFO [msapp-users,,] 27938 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2023-07-15T23:44:14.075+04:00  INFO [msapp-users,,] 27938 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-07-15T23:44:14.075+04:00  INFO [msapp-users,,] 27938 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.8]
+2023-07-15T23:44:14.111+04:00  INFO [msapp-antifraud,,] 27937 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-15T23:44:14.112+04:00  INFO [msapp-users,,] 27938 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-07-15T23:44:14.112+04:00  INFO [msapp-users,,] 27938 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 802 ms
+2023-07-15T23:44:14.114+04:00  INFO [msapp-antifraud,,] 27937 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-15T23:44:14.135+04:00  WARN [msapp-antifraud,,] 27937 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-15T23:44:14.324+04:00  INFO [msapp-users,,] 27938 --- [main] o.f.c.internal.license.VersionPrinter    : Flyway Community Edition 9.5.1 by Redgate
+2023-07-15T23:44:14.324+04:00  INFO [msapp-users,,] 27938 --- [main] o.f.c.internal.license.VersionPrinter    : See what's new here: https://flywaydb.org/documentation/learnmore/releaseNotes#9.5.1
+2023-07-15T23:44:14.324+04:00  INFO [msapp-users,,] 27938 --- [main] o.f.c.internal.license.VersionPrinter    : 
+2023-07-15T23:44:14.328+04:00  INFO [msapp-users,,] 27938 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-07-15T23:44:14.375+04:00  INFO [msapp-antifraud,,] 27937 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path ''
+2023-07-15T23:44:14.395+04:00  INFO [msapp-users,,] 27938 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@98637a2
+2023-07-15T23:44:14.396+04:00  INFO [msapp-users,,] 27938 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-07-15T23:44:14.404+04:00  INFO [msapp-users,,] 27938 --- [main] o.f.c.i.database.base.BaseDatabaseType   : Database: jdbc:postgresql://localhost:5432/dev (PostgreSQL 15.2)
+2023-07-15T23:44:14.427+04:00  INFO [msapp-users,,] 27938 --- [main] o.f.core.internal.command.DbValidate     : Successfully validated 4 migrations (execution time 00:00.012s)
+2023-07-15T23:44:14.428+04:00  INFO [msapp-antifraud,,] 27937 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8081 (http) with context path ''
+2023-07-15T23:44:14.437+04:00  INFO [msapp-antifraud,,] 27937 --- [main] c.decode.msapp.fraud.FraudApplication    : Started FraudApplication in 1.712 seconds (process running for 1.899)
+2023-07-15T23:44:14.442+04:00  INFO [msapp-antifraud,,] 27937 --- [main] c.decode.msapp.fraud.FraudApplication    : Fraud has started
+2023-07-15T23:44:14.460+04:00  INFO [msapp-users,,] 27938 --- [main] o.f.core.internal.command.DbMigrate      : Current version of schema "dev": 3
+2023-07-15T23:44:14.461+04:00  INFO [msapp-users,,] 27938 --- [main] o.f.core.internal.command.DbMigrate      : Schema "dev" is up to date. No migration necessary.
+2023-07-15T23:44:14.493+04:00  INFO [msapp-users,,] 27938 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-07-15T23:44:14.506+04:00  INFO [msapp-users,,] 27938 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.1.7.Final
+2023-07-15T23:44:14.596+04:00  INFO [msapp-users,,] 27938 --- [main] SQL dialect                              : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQLDialect
+2023-07-15T23:44:14.817+04:00  INFO [msapp-users,,] 27938 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-07-15T23:44:14.820+04:00  INFO [msapp-users,,] 27938 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-07-15T23:44:14.962+04:00  WARN [msapp-users,,] 27938 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-07-15T23:44:15.000+04:00  INFO [msapp-users,,] 27938 --- [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@48d14ea0, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@21251e43, org.springframework.security.web.context.SecurityContextHolderFilter@279e85eb, org.springframework.security.web.header.HeaderWriterFilter@5d56c2d2, org.springframework.security.web.authentication.logout.LogoutFilter@1da61a29, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@22cf1808, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1828ab51, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@677274e7, org.springframework.security.web.access.ExceptionTranslationFilter@24f77077, org.springframework.security.web.access.intercept.AuthorizationFilter@63e40188]
+2023-07-15T23:44:15.216+04:00  INFO [msapp-users,,] 27938 --- [main] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 1 endpoint(s) beneath base path ''
+2023-07-15T23:44:15.266+04:00  INFO [msapp-users,,] 27938 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2023-07-15T23:44:15.274+04:00  INFO [msapp-users,,] 27938 --- [main] c.decode.msapp.users.UsersApplication    : Started UsersApplication in 2.157 seconds (process running for 2.369)
+2023-07-15T23:44:15.279+04:00  INFO [msapp-users,,] 27938 --- [main] c.decode.msapp.users.UsersApplication    : Myapp has started
+2023-07-15T23:44:18.602+04:00  INFO [msapp-antifraud,,] 27937 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-15T23:44:18.603+04:00  INFO [msapp-antifraud,,] 27937 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-15T23:44:18.607+04:00  INFO [msapp-antifraud,,] 27937 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-07-15T23:44:18.633+04:00  INFO [msapp-users,,] 27938 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-07-15T23:44:18.634+04:00  INFO [msapp-users,,] 27938 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-07-15T23:44:18.638+04:00  INFO [msapp-users,,] 27938 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

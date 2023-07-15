@@ -1,0 +1,2 @@
+This app requires Nginx-Ingress to be installed first!
+Watch readme.md for additional commands.

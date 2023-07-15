@@ -1,0 +1,8 @@
+appname: myappdb
+dbname: postgres
+dbschema: dev
+namespacename: default
+dnsaddressname: myapptest.com
+dbconfigmap:
+  name: postgres
+  dbname: dev

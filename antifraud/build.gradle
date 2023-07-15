@@ -1,0 +1,3 @@
+//dependencies {
+//    implementation project(':users') //consider about switch "implementation" -> "API" in case of errors in testing
+//}
