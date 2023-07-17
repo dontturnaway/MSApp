@@ -1,7 +1,7 @@
 package com.decode.msapp.users;
 
 
-import com.decode.msapp.users.models.Person;
+import com.decode.msapp.users.models.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -11,24 +11,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class UsersApplicationTestsUnit {
 
-	private Person person;
+	private User user;
 
 	@BeforeEach
 	public void setup() {
-		person = new Person("Vasya" ,1900);
+		user = new User("Vasya" ,1900);
 	}
 
 	@Test
 	void testGetFieldsPositive() throws Exception {
-		var resName = person.getUsername();
-		var resYear = person.getYearOfBirth();
+		var resName = user.getName();
+		var resYear = user.getYearOfBirth();
 		assertEquals("Vasya", resName);
 		assertEquals(1900, resYear);
 	}
 
 	@Test
 	void testSetNameNegative() {
-		ArrayList<Person> emptyList = new ArrayList<Person>();
+		ArrayList<User> emptyList = new ArrayList<User>();
 		assertThrows(IndexOutOfBoundsException.class, () -> {
 			var o = emptyList.get(0);
 		});

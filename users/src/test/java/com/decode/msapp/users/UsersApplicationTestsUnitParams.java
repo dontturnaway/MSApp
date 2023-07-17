@@ -1,7 +1,7 @@
 package com.decode.msapp.users;
 
 
-import com.decode.msapp.users.models.Person;
+import com.decode.msapp.users.models.User;
 import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -19,11 +19,11 @@ import static org.junit.jupiter.api.Assertions.*;
 @RunWith(Parameterized.class)
 class UsersApplicationTestsUnitParams {
 
-	private Person person;
+	private User user;
 
 	@BeforeEach
 	void assignPerson() {
-		person = new Person();
+		user = new User();
 	}
 
 	@ParameterizedTest
@@ -35,33 +35,33 @@ class UsersApplicationTestsUnitParams {
 	@ParameterizedTest
 	@ValueSource(strings = {"Name1", "Name2"} )
 	void testNameAssignPositive(String strings)  {
-		person.setUsername(strings);
-		assertEquals(strings, person.getUsername());
+		user.setName(strings);
+		assertEquals(strings, user.getName());
 	}
 
 	@ParameterizedTest
 	@ValueSource(ints = {1900, 1800})
 	void testYearAssignPositive(int values)  {
-		person.setYearOfBirth(values);
-		assertEquals(values, person.getYearOfBirth());
+		user.setYearOfBirth(values);
+		assertEquals(values, user.getYearOfBirth());
 	}
 
 	@ParameterizedTest
 	@CsvSource({"Name,1900", "Name1,2000", "Name2,3000"})
 	void testFieldsAssignPositive(String name, int value)  {
-		person.setUsername(name);
-		person.setYearOfBirth(value);
-		assertEquals(name, person.getUsername());
-		assertEquals(value, person.getYearOfBirth());
+		user.setName(name);
+		user.setYearOfBirth(value);
+		assertEquals(name, user.getName());
+		assertEquals(value, user.getYearOfBirth());
 	}
 
 	@ParameterizedTest
 	@MethodSource("provideParameters")
 	void testParametersFromMethod(String name, int value) {
-		person.setUsername(name);
-		person.setYearOfBirth(value);
-		assertEquals(name, person.getUsername());
-		assertEquals(value, person.getYearOfBirth());
+		user.setName(name);
+		user.setYearOfBirth(value);
+		assertEquals(name, user.getName());
+		assertEquals(value, user.getYearOfBirth());
 	}
 
 	private static Stream<Arguments> provideParameters() {

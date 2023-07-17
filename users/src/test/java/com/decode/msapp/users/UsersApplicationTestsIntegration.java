@@ -1,12 +1,12 @@
 package com.decode.msapp.users;
 
+import com.decode.msapp.users.controllers.UserRESTController;
+import com.decode.msapp.users.models.User;
+import com.decode.msapp.users.repositories.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.decode.msapp.users.config.SecurityConfig;
-import com.decode.msapp.users.controllers.PeopleRESTController;
-import com.decode.msapp.users.models.Person;
-import com.decode.msapp.users.repositories.PeopleRepository;
-import com.decode.msapp.users.services.PeopleService;
-import com.decode.msapp.users.services.PersonDetailsService;
+import com.decode.msapp.users.services.UserService;
+import com.decode.msapp.users.services.UserCredentialsService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -20,8 +20,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
-@WebMvcTest(controllers = PeopleRESTController.class)
+@WebMvcTest(controllers = UserRESTController.class)
 @Import({SecurityConfig.class})
 class UsersApplicationTestsIntegration {
 
@@ -31,11 +30,11 @@ class UsersApplicationTestsIntegration {
 	private ObjectMapper mapper;
 
 	@MockBean
-	PeopleRepository peopleRepository;
+	UserRepository peopleRepository;
 	@MockBean
-	PersonDetailsService personDetailsService;
+	UserCredentialsService userCredentialsService;
 	@MockBean
-	PeopleService peopleService;
+	UserService userService;
 
 	@Test
 	void getAllPersons() throws Exception {
@@ -52,23 +51,23 @@ class UsersApplicationTestsIntegration {
 
 	@Test
 	void createPersonPositive() throws Exception {
-		Person testPerson = new Person();
-		testPerson.setUsername("MOCK_USER");
-		testPerson.setPassword("123");
-		testPerson.setRole("ROLE_USER");
-		testPerson.setYearOfBirth(1901);
+		User testUser = new User();
+		testUser.setName("MOCK_USER");
+		testUser.setPassword("123");
+		testUser.setRole("ROLE_USER");
+		testUser.setYearOfBirth(1901);
 		mockMvc.perform(MockMvcRequestBuilders.post("/peoplerest")
-				.content(mapper.writeValueAsString(testPerson))
+				.content(mapper.writeValueAsString(testUser))
 				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isCreated());
 	}
 
 	@Test
 	void createPersonNegative() throws Exception {
-		Person emptyTestPerson = new Person();
+		User emptyTestUser = new User();
 		ObjectMapper mapper = new ObjectMapper();
 		mockMvc.perform(MockMvcRequestBuilders.post("/peoplerest")
-				.content(mapper.writeValueAsString(emptyTestPerson))
+				.content(mapper.writeValueAsString(emptyTestUser))
 				.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isBadRequest());
 	}
@@ -76,13 +75,12 @@ class UsersApplicationTestsIntegration {
 	@ParameterizedTest
 	@ValueSource(strings = {"Vasya", "Petya"})
 	void createPersonValues(String names) throws Exception {
-		Person emptyTestPerson = new Person();
-		emptyTestPerson.setUsername(names);
+		User emptyTestUser = new User();
+		emptyTestUser.setName(names);
 		mockMvc.perform(MockMvcRequestBuilders.post("/peoplerest")
-						.content(mapper.writeValueAsString(emptyTestPerson))
+						.content(mapper.writeValueAsString(emptyTestUser))
 						.contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isBadRequest());
 	}
-
 
 }

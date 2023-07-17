@@ -1,6 +1,6 @@
 package com.decode.msapp.users.controllers;
 
-import com.decode.msapp.users.security.PersonDetails;
+import com.decode.msapp.users.security.UserDetailsImpl;
 import com.decode.msapp.users.services.AdminService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -26,8 +26,8 @@ public class IndexWebController {
     @GetMapping("/showUserInfo")
     public String showUserInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        PersonDetails personDetails = (PersonDetails) authentication.getPrincipal();
-        log.info("User defails fetched " + personDetails.getPerson().getUsername());
+        UserDetailsImpl userDetailsImpl = (UserDetailsImpl) authentication.getPrincipal();
+        log.info("User defails fetched " + userDetailsImpl.getPerson().getName());
         return "hello";
     }
 

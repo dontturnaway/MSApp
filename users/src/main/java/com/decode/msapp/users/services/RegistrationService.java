@@ -1,11 +1,11 @@
 package com.decode.msapp.users.services;
 
 import com.decode.msapp.users.DTO.FraudCheckResponse;
-import com.decode.msapp.users.DTO.PersonRegisterDTO;
+import com.decode.msapp.users.DTO.UserRegisterDTO;
 import com.decode.msapp.users.exception.UserIsFraudsterExeption;
 import com.decode.msapp.users.exception.UserIsNotEligibleForFraudTestExeption;
-import com.decode.msapp.users.models.Person;
-import com.decode.msapp.users.repositories.PeopleRepository;
+import com.decode.msapp.users.models.User;
+import com.decode.msapp.users.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,38 +17,34 @@ import org.springframework.web.client.RestTemplate;
 @AllArgsConstructor
 @Slf4j
 public class RegistrationService {
-    private final PeopleRepository peopleRepository;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RestTemplate restTemplate;
 
     @Transactional
-    public void register(PersonRegisterDTO personRegisterDTO) throws Exception {
+    public void register(UserRegisterDTO personRegisterDTO) throws Exception {
 
-        Person person = Person.builder()
-                .username(personRegisterDTO.getUsername())
+        User user = User.builder()
+                .name(personRegisterDTO.getName())
                 .yearOfBirth(personRegisterDTO.getYearOfBirth())
                 .password(passwordEncoder.encode(personRegisterDTO.getPassword()))
                 .role("ROLE_USER")
                 .dateCreated(new java.sql.Timestamp(System.currentTimeMillis()))
                 .build();
-        peopleRepository.saveAndFlush(person); //get ID from DB
+        userRepository.saveAndFlush(user); //get ID from DB
 
         //Fraud Check
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
-                    "http://127.0.0.1:8081/antifraud/" + person.getId(),
+                    "http://127.0.0.1:8081/antifraud/" + user.getId(),
                         FraudCheckResponse.class);
         if (fraudCheckResponse == null)
             throw new UserIsNotEligibleForFraudTestExeption("Empty result received");
 
         if (!(fraudCheckResponse.isFraudster())) {
-            peopleRepository.save(person);
+            userRepository.save(user);
         } else {
             throw new UserIsFraudsterExeption("User is fraudster");
         }
-
-
-
-
     }
 
 }

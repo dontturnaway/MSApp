@@ -8,12 +8,12 @@ import lombok.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "Person")
+@Table(name = "Users")
 @Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class Person {
+public class User {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +21,8 @@ public class Person {
 
     @NotEmpty(message = "Имя не должно быть пустым")
     @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной")
-    @Column(name = "username")
-    private String username;
+    @Column(name = "name")
+    private String name;
 
     @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")
     @Column(name = "year_of_birth")
@@ -38,8 +38,8 @@ public class Person {
     @Column(name = "date_created", nullable = false, updatable = false, insertable = false)
     Timestamp dateCreated;
 
-    public Person(String username, int yearOfBirth) {
-        this.username = username;
+    public User(String name, int yearOfBirth) {
+        this.name = name;
         this.yearOfBirth = yearOfBirth;
     }
 
@@ -47,7 +47,7 @@ public class Person {
     public String toString() {
         return "Person{" +
                 "id=" + id +
-                ", username='" + username + '\'' +
+                ", username='" + name + '\'' +
                 ", yearOfBirth=" + yearOfBirth +
                 ", password='" + password + '\'' +
                 '}';

@@ -1,8 +1,6 @@
 package com.decode.msapp.users.DTO;
 
 
-import com.decode.msapp.users.models.Person;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
@@ -14,12 +12,12 @@ import lombok.experimental.SuperBuilder;
 @RequiredArgsConstructor
 @Data
 @SuperBuilder
-public class PersonDTO {
+public class UserDTO {
 
     //@JsonProperty("username")
     @NotEmpty(message = "Имя не должно быть пустым")
     @Size(min = 2, max = 100, message = "Имя должно быть от 2 до 100 символов длиной")
-    private String username;
+    private String name;
 
    // @JsonProperty("yearOfBirth")
     @Min(value = 1900, message = "Год рождения должен быть больше, чем 1900")

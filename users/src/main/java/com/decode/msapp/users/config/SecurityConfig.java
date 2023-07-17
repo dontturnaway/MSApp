@@ -1,6 +1,6 @@
 package com.decode.msapp.users.config;
 
-import com.decode.msapp.users.services.PersonDetailsService;
+import com.decode.msapp.users.services.UserCredentialsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -16,11 +16,11 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private final PersonDetailsService personDetailsService;
+    private final UserCredentialsService userCredentialsService;
 
     @Autowired
-    public SecurityConfig(PersonDetailsService personDetailsService) {
-        this.personDetailsService = personDetailsService;
+    public SecurityConfig(UserCredentialsService userCredentialsService) {
+        this.userCredentialsService = userCredentialsService;
     }
 
     @Bean
@@ -52,7 +52,7 @@ public class SecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
         return http.getSharedObject(AuthenticationManagerBuilder.class)
-                .userDetailsService(personDetailsService)
+                .userDetailsService(userCredentialsService)
                 .passwordEncoder(getPasswordEncoder())
                 .and()
                 .build();

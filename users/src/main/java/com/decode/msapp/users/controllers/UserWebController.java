@@ -1,8 +1,8 @@
 package com.decode.msapp.users.controllers;
 
-import com.decode.msapp.users.DTO.PersonRegisterDTO;
-import com.decode.msapp.users.models.Person;
-import com.decode.msapp.users.services.PeopleService;
+import com.decode.msapp.users.DTO.UserRegisterDTO;
+import com.decode.msapp.users.models.User;
+import com.decode.msapp.users.services.UserService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,59 +12,59 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/people")
+@RequestMapping("/usersweb")
 @AllArgsConstructor
 @Slf4j
-public class PeopleWebController {
+public class UserWebController {
 
-    private final PeopleService peopleService;
+    private final UserService peopleService;
 
     @GetMapping()
     public String index(Model model) {
-        model.addAttribute("people", peopleService.findAll());
-        return "people/index";
+        model.addAttribute("users", peopleService.findAll());
+        return "users/index";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
         model.addAttribute("person", peopleService.findById(id));
-        return "people/show";
+        return "users/show";
     }
 
     @GetMapping("/new")
-    public String newPerson(@ModelAttribute("person") Person person) {
-        return "people/new";
+    public String newPerson(@ModelAttribute("person") User user) {
+        return "users/new";
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("person") @Valid PersonRegisterDTO personRegisterDTO,
+    public String create(@ModelAttribute("person") @Valid UserRegisterDTO personRegisterDTO,
                          BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "people/new";
 
         peopleService.save(personRegisterDTO);
-        return "redirect:/people";
+        return "redirect:/users";
     }
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id) {
         model.addAttribute("person", peopleService.findById(id));
-        return "people/edit";
+        return "users/edit";
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("person") @Valid PersonRegisterDTO personDTO, BindingResult bindingResult,
+    public String update(@ModelAttribute("person") @Valid UserRegisterDTO personDTO, BindingResult bindingResult,
                          @PathVariable("id") int id) {
         if (bindingResult.hasErrors())
-            return "people/edit";
+            return "users/edit";
 
         peopleService.update(id, personDTO);
-        return "redirect:/people";
+        return "redirect:/users";
     }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable("id") int id) {
         peopleService.delete(id);
-        return "redirect:/people";
+        return "redirect:/users";
     }
 }

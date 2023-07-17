@@ -1,7 +1,7 @@
 package com.decode.msapp.users.controllers.old;
 
-import com.decode.msapp.users.models.Person;
-import com.decode.msapp.users.services.PeopleService;
+import com.decode.msapp.users.models.User;
+import com.decode.msapp.users.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -21,14 +21,14 @@ import java.util.List;
 public class PeopleMicroserviceController {
 
     private final RestTemplate restTemplate;
-    private final PeopleService peopleService;
+    private final UserService userService;
 
     @Value("${spring.application.name}")
     private String applicationName;
 
-    public PeopleMicroserviceController(RestTemplate restTemplate, PeopleService peopleService) {
+    public PeopleMicroserviceController(RestTemplate restTemplate, UserService userService) {
         this.restTemplate = restTemplate;
-        this.peopleService = peopleService;
+        this.userService = userService;
     }
 
     @GetMapping("/requestpeople")
@@ -41,16 +41,16 @@ public class PeopleMicroserviceController {
     @GetMapping("/responsepeople")
     public ResponseEntity<String> response() {
         log.info("Incoming request at {} at /response", applicationName);
-        var result = peopleService.findAll();
+        var result = userService.findAll();
         return ResponseEntity.ok("[" + applicationName + "]: [response from /response:] "+ result);
     }
 
     /* Standart approach for deserializing objects */
     @GetMapping("/requestpeopleobjectstd")
-    public ResponseEntity<List<Person>> requestObjectStandart() {
+    public ResponseEntity<List<User>> requestObjectStandart() {
         log.info("Incoming request at {} for request /requestobject ", applicationName);
-        Person[] objects  = restTemplate.
-                getForEntity("http://localhost:8090/responsepeopleobject", Person[].class).getBody();
+        User[] objects  = restTemplate.
+                getForEntity("http://localhost:8090/responsepeopleobject", User[].class).getBody();
         assert objects != null;
         var result= Arrays.stream(objects).toList();
         return ResponseEntity.ok(result);
@@ -58,21 +58,21 @@ public class PeopleMicroserviceController {
 
     /* The more shorthand approach for deserializing objects */
     @GetMapping("/requestpeopleobject")
-    public ResponseEntity<List<Person>> requestObjectShorthand() {
+    public ResponseEntity<List<User>> requestObjectShorthand() {
         log.info("Incoming request at {} for request /requestobject ", applicationName);
-        List<Person> personList = restTemplate.exchange(
+        List<User> userList = restTemplate.exchange(
                         "http://localhost:8090/responsepeopleobject",
                         HttpMethod.GET,
                         null,
-                        new ParameterizedTypeReference<List<Person>>() {}
+                        new ParameterizedTypeReference<List<User>>() {}
                 ).getBody();
-        return ResponseEntity.ok(personList);
+        return ResponseEntity.ok(userList);
     }
 
     @GetMapping("/responsepeopleobject")
-    public ResponseEntity<List<Person>> responseObject() {
+    public ResponseEntity<List<User>> responseObject() {
         log.info("Incoming request at {} at /responseobject", applicationName);
-        return ResponseEntity.ok(peopleService.findAll());
+        return ResponseEntity.ok(userService.findAll());
     }
 
 }

@@ -1,8 +1,8 @@
 package com.decode.msapp.users.services;
 
-import com.decode.msapp.users.models.Person;
-import com.decode.msapp.users.repositories.PeopleRepository;
-import com.decode.msapp.users.security.PersonDetails;
+import com.decode.msapp.users.models.User;
+import com.decode.msapp.users.repositories.UserRepository;
+import com.decode.msapp.users.security.UserDetailsImpl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,19 +17,19 @@ import java.util.Optional;
 @AllArgsConstructor
 @Transactional(readOnly = true)
 @Slf4j
-public class PersonDetailsService implements UserDetailsService {
+public class UserCredentialsService implements UserDetailsService {
 
-    private final PeopleRepository peopleRepository;
+    private final UserRepository peopleRepository;
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Optional<Person> person = peopleRepository.findByUsername(s);
+        Optional<User> person = peopleRepository.findByName(s);
 
         if (person.isEmpty()) {
             log.error("User not found");
             throw new UsernameNotFoundException("User not found!");
         }
         log.info("User is found, proceeding");
-        return new PersonDetails(person.get());
+        return new UserDetailsImpl(person.get());
     }
 }

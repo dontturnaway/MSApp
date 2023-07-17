@@ -1,8 +1,8 @@
 package com.decode.msapp.users.util;
 
-import com.decode.msapp.users.DTO.PersonRegisterDTO;
-import com.decode.msapp.users.models.Person;
-import com.decode.msapp.users.services.PersonDetailsService;
+import com.decode.msapp.users.DTO.UserRegisterDTO;
+import com.decode.msapp.users.models.User;
+import com.decode.msapp.users.services.UserCredentialsService;
 import lombok.AllArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
@@ -13,21 +13,21 @@ import org.springframework.validation.Validator;
 @AllArgsConstructor
 public class PersonValidator implements Validator {
 
-    private final PersonDetailsService personDetailsService;
+    private final UserCredentialsService userCredentialsService;
 
 
     @Override
     public boolean supports(Class<?> aClass) {
-        return Person.class.equals(aClass);
+        return User.class.equals(aClass);
     }
 
     @Override
     public void validate(Object o, Errors errors) {
-        PersonRegisterDTO person = (PersonRegisterDTO)o;
+        UserRegisterDTO user = (UserRegisterDTO)o;
         //its better not to rely on this service and remake it with a new service
         //which returns new Optional
         try {
-            personDetailsService.loadUserByUsername(person.getUsername());
+            userCredentialsService.loadUserByUsername(user.getName());
         } catch (UsernameNotFoundException e) {
             return;
         }
