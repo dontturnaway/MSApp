@@ -9,8 +9,7 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "Person")
-@Getter
-@Setter
+@Data
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

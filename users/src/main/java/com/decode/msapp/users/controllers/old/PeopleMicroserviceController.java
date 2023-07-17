@@ -1,4 +1,4 @@
-package com.decode.msapp.users.controllers;
+package com.decode.msapp.users.controllers.old;
 
 import com.decode.msapp.users.models.Person;
 import com.decode.msapp.users.services.PeopleService;

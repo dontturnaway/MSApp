@@ -1,4 +1,14 @@
 package com.decode.msapp.users.DTO;
 
-public record FraudCheckResponse(Boolean isFraudster) {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
+
+@AllArgsConstructor
+@Getter @Setter
+public class FraudCheckResponse {
+    private boolean isFraudster;
+
+
 }

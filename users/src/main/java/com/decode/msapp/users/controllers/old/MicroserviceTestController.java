@@ -1,4 +1,4 @@
-package com.decode.msapp.users.controllers;
+package com.decode.msapp.users.controllers.old;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

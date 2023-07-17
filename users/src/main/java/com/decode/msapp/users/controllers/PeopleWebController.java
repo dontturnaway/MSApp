@@ -1,6 +1,6 @@
 package com.decode.msapp.users.controllers;
 
-import com.decode.msapp.users.DTO.PersonDTO;
+import com.decode.msapp.users.DTO.PersonRegisterDTO;
 import com.decode.msapp.users.models.Person;
 import com.decode.msapp.users.services.PeopleService;
 import jakarta.validation.Valid;
@@ -21,14 +21,13 @@ public class PeopleWebController {
 
     @GetMapping()
     public String index(Model model) {
-        log.info("CONTROLLER PEOPLE CALLED");
         model.addAttribute("people", peopleService.findAll());
         return "people/index";
     }
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model) {
-        model.addAttribute("person", peopleService.findOne(id));
+        model.addAttribute("person", peopleService.findById(id));
         return "people/show";
     }
 
@@ -38,23 +37,23 @@ public class PeopleWebController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("person") @Valid PersonDTO personDTO,
+    public String create(@ModelAttribute("person") @Valid PersonRegisterDTO personRegisterDTO,
                          BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "people/new";
 
-        peopleService.save(personDTO);
+        peopleService.save(personRegisterDTO);
         return "redirect:/people";
     }
 
     @GetMapping("/{id}/edit")
     public String edit(Model model, @PathVariable("id") int id) {
-        model.addAttribute("person", peopleService.findOne(id));
+        model.addAttribute("person", peopleService.findById(id));
         return "people/edit";
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("person") @Valid PersonDTO personDTO, BindingResult bindingResult,
+    public String update(@ModelAttribute("person") @Valid PersonRegisterDTO personDTO, BindingResult bindingResult,
                          @PathVariable("id") int id) {
         if (bindingResult.hasErrors())
             return "people/edit";

@@ -55,6 +55,8 @@ subprojects {
         implementation 'io.micrometer:micrometer-registry-prometheus:1.11.0' //metrics
         implementation 'io.micrometer:micrometer-tracing-bridge-otel'
         implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
+        //DTO autoconversion support
+        implementation 'org.modelmapper:modelmapper:3.1.1'
     }
 
     test {

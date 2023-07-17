@@ -10,11 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @Slf4j
-public class IndexController {
+public class IndexWebController {
 
     private final AdminService adminService;
 
-    public IndexController(AdminService adminService) {
+    public IndexWebController(AdminService adminService) {
         this.adminService=adminService;
     }
 

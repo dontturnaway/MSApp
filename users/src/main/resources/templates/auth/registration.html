@@ -20,6 +20,11 @@
     <input type="password" th:field="*{password}" id="password"/>
     <div style="color:red" th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Password Error</div>
     <br/>
+    <label for="role">Введите роль: </label>
+    <input type="text" th:field="*{role}" id="role"/>
+    <div style="color:red" th:if="${#fields.hasErrors('role')}" th:errors="*{role}">Role Error
+    </div>
+    <br/>
     <input type="submit" value="Sign up!"/>
 </form>
 

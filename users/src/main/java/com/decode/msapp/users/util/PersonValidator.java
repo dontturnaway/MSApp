@@ -1,5 +1,6 @@
 package com.decode.msapp.users.util;
 
+import com.decode.msapp.users.DTO.PersonRegisterDTO;
 import com.decode.msapp.users.models.Person;
 import com.decode.msapp.users.services.PersonDetailsService;
 import lombok.AllArgsConstructor;
@@ -22,7 +23,7 @@ public class PersonValidator implements Validator {
 
     @Override
     public void validate(Object o, Errors errors) {
-        Person person = (Person)o;
+        PersonRegisterDTO person = (PersonRegisterDTO)o;
         //its better not to rely on this service and remake it with a new service
         //which returns new Optional
         try {

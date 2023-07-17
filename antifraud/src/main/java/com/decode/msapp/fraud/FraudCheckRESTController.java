@@ -12,18 +12,11 @@ public class FraudCheckRESTController {
 
     FraudCheckService fraudCheckService;
 
-    @GetMapping("/check/{userID}")
+    @GetMapping("{userID}")
     boolean isFraudster(@PathVariable("userID") Integer userId) {
         log.info("Checking for fraud at User ID= " + userId );
         fraudCheckService.checkByUserId(userId);
         return false;
     }
-
-//    @GetMapping("/check/{userID}")
-//    FraudCheckResponse isFraudster(@PathVariable("userID") Integer userId) {
-//        log.info("Checking for fraud at User ID= " + userId );
-//        fraudCheckService.checkByUserId(userId);
-//        return false;
-//    }
 
 }
