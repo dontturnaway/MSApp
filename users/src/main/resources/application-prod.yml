@@ -5,4 +5,15 @@ spring:
       url: jdbc:postgresql://postgres:5432/dev
       username: dev
       password: dev
+app:
+  url:
+    fraud: ${URL-FRAUD}
 
+'To setup ENV in Kubernetes:'
+'env:
+    - name: DB_HOST
+      valueFrom:
+        configMapKeyRef:
+          name: your-config-map
+          key: dbHost
+'

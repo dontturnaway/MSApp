@@ -7,19 +7,22 @@ import com.decode.msapp.users.exception.UserIsNotEligibleForFraudTestExeption;
 import com.decode.msapp.users.models.User;
 import com.decode.msapp.users.repositories.UserRepository;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Slf4j
-public class RegistrationService {
+public class UserRegisterService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RestTemplate restTemplate;
+    @Value("${app.serviceurl.antifraud}")
+    private String antiFraudServiceUrl;
 
     @Transactional
     public void register(UserRegisterDTO personRegisterDTO) throws Exception {
@@ -33,10 +36,10 @@ public class RegistrationService {
                 .build();
         userRepository.saveAndFlush(user); //get ID from DB
 
-        //Fraud Check
+        String userCheckUrl = antiFraudServiceUrl+"/fraudcheck/"+ user.getId();
+        log.info("Checking user for fraud: " + userCheckUrl);
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
-                    "http://127.0.0.1:8081/antifraud/" + user.getId(),
-                        FraudCheckResponse.class);
+                                            userCheckUrl, FraudCheckResponse.class);
         if (fraudCheckResponse == null)
             throw new UserIsNotEligibleForFraudTestExeption("Empty result received");
 

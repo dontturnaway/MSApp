@@ -15,10 +15,6 @@ spring:
     show-sql: true
   datasource:
     driverClassName: org.postgresql.Driver
-    #applied in profiles
-    #url: jdbc:postgresql://postgres:5432/dev
-    #username: dev
-    #password: dev
   flyway:
     enabled: true
     baseline-on-migrate: true

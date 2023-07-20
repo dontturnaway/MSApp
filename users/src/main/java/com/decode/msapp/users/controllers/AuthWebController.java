@@ -1,7 +1,7 @@
 package com.decode.msapp.users.controllers;
 
 import com.decode.msapp.users.DTO.UserRegisterDTO;
-import com.decode.msapp.users.services.RegistrationService;
+import com.decode.msapp.users.services.UserRegisterService;
 import com.decode.msapp.users.util.PersonValidator;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/auth")
 public class AuthWebController {
 
-    private final RegistrationService registrationService;
+    private final UserRegisterService userRegisterService;
     private final PersonValidator personValidator;
 
     @GetMapping("/login")
@@ -30,12 +30,12 @@ public class AuthWebController {
     }
 
     @GetMapping("/registration")
-    public String registrationPage(@ModelAttribute("person") UserRegisterDTO person) {
+    public String registrationPage(@ModelAttribute("user") UserRegisterDTO user) {
         return "auth/registration";
     }
 
     @PostMapping("/registration")
-        public String performRegistration(@ModelAttribute("person") @Valid UserRegisterDTO personRegisterDTO,
+        public String performRegistration(@ModelAttribute("user") @Valid UserRegisterDTO user,
                                           BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors().forEach(e-> {
@@ -43,8 +43,8 @@ public class AuthWebController {
             });
             return "/auth/registration";
         }
-        personValidator.validate(personRegisterDTO, bindingResult);
-        registrationService.register(personRegisterDTO);
+        personValidator.validate(user, bindingResult);
+        userRegisterService.register(user);
         return "redirect:/auth/login";
 
     }

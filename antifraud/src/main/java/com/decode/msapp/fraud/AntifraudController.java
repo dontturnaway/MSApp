@@ -7,15 +7,14 @@ import org.springframework.web.bind.annotation.*;
 @Slf4j
 @RestController
 @AllArgsConstructor
-@RequestMapping("/antifraud")
-public class FraudCheckRESTController {
+@RequestMapping("/fraudcheck")
+public class AntifraudController {
 
-    FraudCheckService fraudCheckService;
+    AntifraudService antifraudService;
 
-    @GetMapping("{userID}")
+    @GetMapping("/{userID}")
     boolean isFraudster(@PathVariable("userID") Integer userId) {
-        log.info("Checking for fraud at User ID= " + userId );
-        fraudCheckService.checkByUserId(userId);
+        antifraudService.checkByUserId(userId);
         return false;
     }
 

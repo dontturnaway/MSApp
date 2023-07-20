@@ -5,7 +5,7 @@ import com.decode.msapp.users.DTO.UserRegisterDTO;
 import com.decode.msapp.users.models.User;
 import com.decode.msapp.users.services.UserService;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -16,7 +16,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@AllArgsConstructor //no need to create constructor
+@RequiredArgsConstructor
 @RequestMapping("/users")
 public class UserRESTController {
 
@@ -25,7 +25,6 @@ public class UserRESTController {
     @GetMapping()
     public List<UserDTO> getAll() {
         log.info("[GET PERSON CONTROLLER]: " + " all user list requested");
-        log.error("[GET PERSON CONTROLLER]: " + " TEST");
         return userService.findAllDTO();
     }
 

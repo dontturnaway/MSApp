@@ -21,13 +21,14 @@ public class AppConfiguration {
         return new ModelMapper();
     }
 
+    /*
     @Bean
     OtlpHttpSpanExporter otlpHttpSpanExporter(@Value("${tracing.url}") String url) {
         return OtlpHttpSpanExporter.builder()
                 .setEndpoint(url)
                 .build();
     }
-
+*/
 
 //
 //    @Autowired(required=false)
