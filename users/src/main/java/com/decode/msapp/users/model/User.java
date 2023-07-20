@@ -1,4 +1,4 @@
-package com.decode.msapp.users.models;
+package com.decode.msapp.users.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;

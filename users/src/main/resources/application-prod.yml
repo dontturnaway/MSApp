@@ -2,12 +2,12 @@ server:
     port: 8080
 spring:
   datasource:
-      url: jdbc:postgresql://postgres:5432/dev
-      username: dev
+      url: jdbc:postgresql://postgres:5432/users_service
+      username: users_service
       password: dev
 app:
   url:
-    fraud: ${URL-FRAUD}
+    fraud: ${URL-FRAUDSERVICE}
 
 'To setup ENV in Kubernetes:'
 'env:

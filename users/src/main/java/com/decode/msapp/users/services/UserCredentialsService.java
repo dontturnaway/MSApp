@@ -1,6 +1,6 @@
 package com.decode.msapp.users.services;
 
-import com.decode.msapp.users.models.User;
+import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.repositories.UserRepository;
 import com.decode.msapp.users.security.UserDetailsImpl;
 import lombok.AllArgsConstructor;

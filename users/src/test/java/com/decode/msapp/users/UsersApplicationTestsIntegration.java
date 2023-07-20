@@ -1,7 +1,7 @@
 package com.decode.msapp.users;
 
 import com.decode.msapp.users.controllers.UserRESTController;
-import com.decode.msapp.users.models.User;
+import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.repositories.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.decode.msapp.users.config.SecurityConfig;

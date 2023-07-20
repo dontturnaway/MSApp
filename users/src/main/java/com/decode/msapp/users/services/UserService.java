@@ -2,7 +2,7 @@ package com.decode.msapp.users.services;
 
 import com.decode.msapp.users.DTO.UserDTO;
 import com.decode.msapp.users.DTO.UserRegisterDTO;
-import com.decode.msapp.users.models.User;
+import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.repositories.UserRepository;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;

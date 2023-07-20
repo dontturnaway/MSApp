@@ -1,6 +1,6 @@
 package com.decode.msapp.users.controllers.old;
 
-import com.decode.msapp.users.models.User;
+import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;

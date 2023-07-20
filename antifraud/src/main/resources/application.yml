@@ -20,7 +20,7 @@ spring:
     #username: dev
     #password: dev
   flyway:
-    enabled: false
+    enabled: true
     baseline-on-migrate: true
     #defaultSchema: dev
     #user: dev

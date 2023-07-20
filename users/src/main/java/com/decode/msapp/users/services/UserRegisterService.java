@@ -4,7 +4,7 @@ import com.decode.msapp.users.DTO.FraudCheckResponse;
 import com.decode.msapp.users.DTO.UserRegisterDTO;
 import com.decode.msapp.users.exception.UserIsFraudsterExeption;
 import com.decode.msapp.users.exception.UserIsNotEligibleForFraudTestExeption;
-import com.decode.msapp.users.models.User;
+import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.repositories.UserRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -36,7 +36,7 @@ public class UserRegisterService {
                 .build();
         userRepository.saveAndFlush(user); //get ID from DB
 
-        String userCheckUrl = antiFraudServiceUrl+"/fraudcheck/"+ user.getId();
+        String userCheckUrl = antiFraudServiceUrl+"/fraudchecks/newcheck/"+ user.getId();
         log.info("Checking user for fraud: " + userCheckUrl);
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
                                             userCheckUrl, FraudCheckResponse.class);

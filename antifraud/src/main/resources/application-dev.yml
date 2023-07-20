@@ -2,7 +2,7 @@ server:
     port: 8081
 spring:
   datasource:
-      url: jdbc:postgresql://localhost:5432/dev
-      username: dev
+      url: jdbc:postgresql://localhost:5432/fraud_service
+      username: fraud_service
       password: dev
 

@@ -2,7 +2,7 @@ package com.decode.msapp.users.controllers;
 
 import com.decode.msapp.users.DTO.UserDTO;
 import com.decode.msapp.users.DTO.UserRegisterDTO;
-import com.decode.msapp.users.models.User;
+import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.services.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

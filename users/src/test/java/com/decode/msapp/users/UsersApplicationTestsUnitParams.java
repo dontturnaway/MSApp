@@ -1,7 +1,7 @@
 package com.decode.msapp.users;
 
 
-import com.decode.msapp.users.models.User;
+import com.decode.msapp.users.model.User;
 import org.apache.logging.log4j.util.Strings;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.params.ParameterizedTest;
