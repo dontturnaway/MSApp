@@ -2,6 +2,7 @@ package com.decode.msapp.users.controllers;
 
 import com.decode.msapp.users.security.UserDetailsImpl;
 import com.decode.msapp.users.services.AdminService;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -10,22 +11,14 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
 @Slf4j
+@AllArgsConstructor
 public class IndexWebController {
 
     private final AdminService adminService;
 
-    public IndexWebController(AdminService adminService) {
-        this.adminService=adminService;
-    }
-
     @GetMapping
     public String index() {
         return "index";
-    }
-
-    @GetMapping("/hello")
-    public String sayHello() {
-        return "hello";
     }
 
     @GetMapping("/showUserInfo")

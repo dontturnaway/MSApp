@@ -2,6 +2,9 @@ package com.decode.msapp.users.DTO;
 
 
 import jakarta.persistence.Column;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
@@ -13,6 +16,8 @@ import lombok.experimental.SuperBuilder;
 @Data
 @SuperBuilder
 public class UserDTO {
+
+    private Integer id;
 
     //@JsonProperty("username")
     @NotEmpty(message = "Имя не должно быть пустым")

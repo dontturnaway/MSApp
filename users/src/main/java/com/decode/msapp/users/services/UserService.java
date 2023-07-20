@@ -26,20 +26,9 @@ public class UserService {
         return peopleRepository.findAll();
     }
 
-    public List<UserDTO> findAllDTO() {
-        return findAll().stream()
-                .map(e-> mapper.map(e, UserDTO.class))
-                .collect(Collectors.toCollection(ArrayList::new));
-    }
-
     public User findById(int id) {
         Optional<User> foundPerson = peopleRepository.findById(id);
         return foundPerson.orElse(null);
-    }
-
-    public UserDTO findByIdDTO(int id) {
-        var person = findById(id);
-        return mapper.map(person, UserDTO.class);
     }
 
     @Transactional
@@ -48,20 +37,11 @@ public class UserService {
     }
 
     @Transactional
-    public User save(UserRegisterDTO personDTORegister) {
-        var person=mapper.map(personDTORegister, User.class);
-        return save(person);
-    }
-
-    @Transactional
-    public void update(int id, User user) {
-        peopleRepository.save(user);
-    }
-
-    @Transactional
-    public void update(int id, UserRegisterDTO personDTORegister) {
-        var person=mapper.map(personDTORegister, User.class);
-        update(person.getId(), person);
+    public void update(/*int id,*/ User userUpdated) {
+        //Here we're getting just a reference (proxy) for future update
+        //not querying it from the DB
+        //var userToUpdate = peopleRepository.getReferenceById(id);
+        peopleRepository.save(userUpdated);
     }
 
     @Transactional

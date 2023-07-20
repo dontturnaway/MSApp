@@ -14,14 +14,19 @@
     <div style="text-align: right; vertical-align: top;">
         <a href="http://127.0.0.1:8080/auth/login">Login</a><br>
         <a href="http://127.0.0.1:8080/auth/registration">Registration</a>
+        <form th:action="@{/logout}" th:method="POST">
+            <input type="submit" value="Logout" />
+        </form>
     </div>
     <br>&nbsp</br>
     <br>&nbsp</br>
-    <div style="text-align: center; text">
+    <div style="text-align: center; ">
         <a href="http://127.0.0.1:8080/users">All Users</a><br>
         <a href="http://127.0.0.1:8080/users/1">Get User by ID</a><br>
-        <a href="http://127.0.0.1:8081/antifraud">Users</a><br>
-        <a href="http://127.0.0.1:8081/antifraud/1">Check Fraud by ID</a><br>
+        <a href="http://127.0.0.1:8081/fraudchecks">Antifraud log</a><br>
+        <a href="http://127.0.0.1:8081/fraudchecks/1">Antifraud log by ID</a><br>
+        <a href="http://127.0.0.1:8081/fraudchecks/newcheck/1">Check new fraud by id</a><br>
+        <br>
    </div>
   </h3>
   </body>

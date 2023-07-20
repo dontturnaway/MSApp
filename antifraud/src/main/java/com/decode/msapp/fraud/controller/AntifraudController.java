@@ -11,7 +11,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @AllArgsConstructor
-@RequestMapping("/antifraud")
+@RequestMapping("/fraudchecks")
 public class AntifraudController {
 
     private final AntifraudService antifraudService;
