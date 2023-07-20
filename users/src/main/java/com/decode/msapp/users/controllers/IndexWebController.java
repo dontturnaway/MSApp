@@ -18,6 +18,11 @@ public class IndexWebController {
         this.adminService=adminService;
     }
 
+    @GetMapping
+    public String index() {
+        return "index";
+    }
+
     @GetMapping("/hello")
     public String sayHello() {
         return "hello";
