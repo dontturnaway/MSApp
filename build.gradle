@@ -33,15 +33,19 @@ subprojects {
     }
 
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
         implementation 'org.springframework.boot:spring-boot-starter-validation'
         implementation 'org.springframework.boot:spring-boot-starter-web'
-        implementation 'org.flywaydb:flyway-core'
-        implementation 'org.projectlombok:lombok:1.18.26'
-        runtimeOnly 'org.postgresql:postgresql'
         testImplementation 'org.springframework.boot:spring-boot-starter-test'
+        //DBMS
+        implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+        implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+        implementation 'org.flywaydb:flyway-core'
+        runtimeOnly 'org.postgresql:postgresql'
+        //Thymeleaf
+        implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+        implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
         //Lombok
+        implementation 'org.projectlombok:lombok:1.18.26'
         compileOnly 'org.projectlombok:lombok:1.18.26'
         annotationProcessor 'org.projectlombok:lombok:1.18.26'
         testCompileOnly 'org.projectlombok:lombok:1.18.26'
@@ -64,15 +68,20 @@ subprojects {
     }
 }
 
-configure([project(':users')]) {
-        dependencies {
-            implementation 'org.springframework.boot:spring-boot-starter-security'
-            implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-            implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
-            testImplementation 'org.springframework.security:spring-security-test'
-       }
+configure([project(':users'), project(':antifraud')]) {
+    dependencies {
+        //Security
+        implementation 'org.springframework.boot:spring-boot-starter-security'
+        testImplementation 'org.springframework.security:spring-security-test'
+    }
 }
 
-
+configure([project(':apigw')]) {
+    dependencies {
+        implementation 'org.springframework.cloud:spring-cloud-starter-gateway:4.0.6'
+        implementation 'org.springframework.boot:spring-boot-starter-security'
+        testImplementation 'org.springframework.security:spring-security-test'
+    }
+}
 
 

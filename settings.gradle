@@ -1,3 +1,5 @@
 rootProject.name = 'MSApp'
 include 'users'
 include 'antifraud'
+include 'apigw'
+

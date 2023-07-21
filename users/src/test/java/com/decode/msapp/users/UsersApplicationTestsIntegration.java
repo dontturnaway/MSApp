@@ -4,7 +4,6 @@ import com.decode.msapp.users.controllers.UserRESTController;
 import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.repositories.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.decode.msapp.users.config.SecurityConfig;
 import com.decode.msapp.users.services.UserService;
 import com.decode.msapp.users.services.UserCredentialsService;
 import org.junit.jupiter.api.Test;

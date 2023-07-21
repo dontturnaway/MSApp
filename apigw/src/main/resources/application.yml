@@ -1,0 +1,29 @@
+server:
+  port: 8080
+spring:
+  application:
+      name: msapp-apigateway
+  main:
+    web-application-type: reactive
+  cloud:
+     gateway:
+        routes:
+          - id: users
+            uri: http://127.0.0.1:8081
+            predicates:
+              - Path=/users/**
+          - id: fraudchecks
+            uri: http://127.0.0.1:8082
+            predicates:
+              - Path=/fraudchecks/**
+  datasource:
+    url: jdbc:postgresql://localhost:5432/dev
+    username: dev
+    password: dev
+logging:
+  level:
+    org.springframework.cloud.gateway: TRACE
+    org.springframework.http.server.reactive: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.ipc.netty: DEBUG
+    reactor.netty: DEBUG
