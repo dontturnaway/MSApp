@@ -40,13 +40,13 @@ public class AuthWebController {
     @PostMapping("/registration")
         public String performRegistration(@ModelAttribute("user") @Valid UserDtoAdd userDTOAdd,
                                           BindingResult bindingResult) throws Exception {
+        personValidator.validate(userDTOAdd, bindingResult);
         if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors().forEach(e-> {
                 log.error("Error in fields " + e.toString());
             });
             return "/auth/registration";
         }
-        personValidator.validate(userDTOAdd, bindingResult);
         User userToRegister=mapper.map(userDTOAdd, User.class);
         userRegisterService.register(userToRegister);
         return "redirect:/auth/login";
