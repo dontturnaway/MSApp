@@ -15,21 +15,24 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public class UserService {
 
-    private final UserRepository peopleRepository;
+    private final UserRepository userRepository;
     private final ModelMapper mapper;
 
     public List<User> findAll() {
-        return peopleRepository.findAll();
+        return userRepository.findAll();
     }
 
-    public User findById(int id) {
-        Optional<User> foundPerson = peopleRepository.findById(id);
-        return foundPerson.orElse(null);
+    public Optional<User> findById(int id) {
+        return userRepository.findById(id);
+    }
+
+    public List<User> findByNameSubstring(String substring) {
+        return userRepository.findByNameContainingIgnoreCase(substring);
     }
 
     @Transactional
     public User save(User user) {
-        return peopleRepository.save(user);
+        return userRepository.save(user);
     }
 
     @Transactional
@@ -37,11 +40,11 @@ public class UserService {
         //Here we're getting just a reference (proxy) for future update
         //not querying it from the DB
         //var userToUpdate = peopleRepository.getReferenceById(id);
-        peopleRepository.save(userUpdated);
+        userRepository.save(userUpdated);
     }
 
     @Transactional
     public void delete(int id) {
-        peopleRepository.deleteById(id);
+        userRepository.deleteById(id);
     }
 }

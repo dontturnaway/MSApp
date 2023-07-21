@@ -3,7 +3,7 @@ package com.decode.msapp.users.controllers;
 import com.decode.msapp.users.DTO.UserDtoAdd;
 import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.services.UserRegisterService;
-import com.decode.msapp.users.util.PersonValidator;
+import com.decode.msapp.users.util.UserValidator;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AuthWebController {
 
     private final UserRegisterService userRegisterService;
-    private final PersonValidator personValidator;
+    private final UserValidator userValidator;
     private final ModelMapper mapper;
 
     @GetMapping("/login")
@@ -40,7 +40,7 @@ public class AuthWebController {
     @PostMapping("/registration")
         public String performRegistration(@ModelAttribute("user") @Valid UserDtoAdd userDTOAdd,
                                           BindingResult bindingResult) throws Exception {
-        personValidator.validate(userDTOAdd, bindingResult);
+        userValidator.validate(userDTOAdd, bindingResult);
         if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors().forEach(e-> {
                 log.error("Error in fields " + e.toString());

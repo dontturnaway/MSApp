@@ -11,7 +11,7 @@ import org.springframework.validation.Validator;
 
 @Component
 @AllArgsConstructor
-public class PersonValidator implements Validator {
+public class UserValidator implements Validator {
 
     private final UserCredentialsService userCredentialsService;
 

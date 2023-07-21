@@ -6,7 +6,7 @@ import com.decode.msapp.users.exception.UserIsNotEligibleForFraudTestExeption;
 import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.services.UserRegisterService;
 import com.decode.msapp.users.services.UserService;
-import com.decode.msapp.users.util.PersonValidator;
+import com.decode.msapp.users.util.UserValidator;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -32,7 +32,7 @@ public class UserRESTController {
     private final UserService userService;
     private final UserRegisterService userRegisterService;
     private final ModelMapper mapper;
-    private final PersonValidator personValidator;
+    private final UserValidator userValidator;
 
     @GetMapping()
     public ResponseEntity<List<UserDtoGet>> getAll() {
@@ -45,8 +45,23 @@ public class UserRESTController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDtoGet> getById(@PathVariable("id") int id) {
-        var person = userService.findById(id);
-        return new ResponseEntity<>(mapper.map(person, UserDtoGet.class), HttpStatusCode.valueOf(200));
+        var user = userService.findById(id);
+        if (user.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No mathces found");
+        }
+        return new ResponseEntity<>(mapper.map(user, UserDtoGet.class), HttpStatusCode.valueOf(200));
+    }
+
+    @GetMapping("/seachByName/{nameSearch}")
+    public ResponseEntity<List<UserDtoGet>> getByNameSubstring(@PathVariable("nameSearch") String nameSearch) {
+        var users = userService.findByNameSubstring(nameSearch);
+        if (users.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "No mathces found");
+        }
+        var result = users.stream()
+                .map(e-> mapper.map(e, UserDtoGet.class))
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(result, HttpStatusCode.valueOf(200));
     }
 
     @PostMapping()
@@ -63,7 +78,7 @@ public class UserRESTController {
     @PostMapping("/register")
     public ResponseEntity<String> register(@RequestBody @Valid UserDtoAdd userDTOAdd,
                                          BindingResult bindingResult) {
-        personValidator.validate(userDTOAdd, bindingResult);
+        userValidator.validate(userDTOAdd, bindingResult);
         if (bindingResult.hasErrors()) {
             return ResponseEntity.badRequest().body("Error in parameters " + bindingResult);
         }
