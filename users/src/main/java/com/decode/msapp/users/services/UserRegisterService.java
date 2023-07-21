@@ -1,7 +1,7 @@
 package com.decode.msapp.users.services;
 
 import com.decode.msapp.users.DTO.FraudCheckResponse;
-import com.decode.msapp.users.DTO.UserRegisterDTO;
+import com.decode.msapp.users.DTO.UserDtoAdd;
 import com.decode.msapp.users.exception.UserIsFraudsterExeption;
 import com.decode.msapp.users.exception.UserIsNotEligibleForFraudTestExeption;
 import com.decode.msapp.users.model.User;
@@ -25,7 +25,7 @@ public class UserRegisterService {
     private String antiFraudServiceUrl;
 
     @Transactional
-    public void register(UserRegisterDTO personRegisterDTO) throws Exception {
+    public void register(UserDtoAdd personRegisterDTO) throws Exception {
 
         User user = User.builder()
                 .name(personRegisterDTO.getName())

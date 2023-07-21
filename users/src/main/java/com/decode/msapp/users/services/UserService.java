@@ -1,7 +1,5 @@
 package com.decode.msapp.users.services;
 
-import com.decode.msapp.users.DTO.UserDTO;
-import com.decode.msapp.users.DTO.UserRegisterDTO;
 import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.repositories.UserRepository;
 import lombok.AllArgsConstructor;
@@ -9,10 +7,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @Service
 @AllArgsConstructor //no need to use constructor

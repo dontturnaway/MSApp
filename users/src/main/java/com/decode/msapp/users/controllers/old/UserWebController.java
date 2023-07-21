@@ -1,6 +1,6 @@
 package com.decode.msapp.users.controllers.old;
 
-import com.decode.msapp.users.DTO.UserRegisterDTO;
+import com.decode.msapp.users.DTO.UserDtoAdd;
 import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.services.UserService;
 import jakarta.validation.Valid;
@@ -39,7 +39,7 @@ public class UserWebController {
     }
 
     @PostMapping()
-    public String create(@ModelAttribute("person") @Valid UserRegisterDTO personRegisterDTO,
+    public String create(@ModelAttribute("person") @Valid UserDtoAdd personRegisterDTO,
                          BindingResult bindingResult) {
         if (bindingResult.hasErrors())
             return "people/new";
@@ -55,7 +55,7 @@ public class UserWebController {
     }
 
     @PutMapping("/{id}")
-    public String update(@ModelAttribute("person") @Valid UserRegisterDTO personDTO, BindingResult bindingResult,
+    public String update(@ModelAttribute("person") @Valid UserDtoAdd personDTO, BindingResult bindingResult,
                          @PathVariable("id") int id) {
         if (bindingResult.hasErrors())
             return "users/edit";

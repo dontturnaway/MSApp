@@ -1,6 +1,6 @@
 package com.decode.msapp.users.controllers;
 
-import com.decode.msapp.users.DTO.UserRegisterDTO;
+import com.decode.msapp.users.DTO.UserDtoAdd;
 import com.decode.msapp.users.services.UserRegisterService;
 import com.decode.msapp.users.util.PersonValidator;
 import jakarta.validation.Valid;
@@ -30,12 +30,12 @@ public class AuthWebController {
     }
 
     @GetMapping("/registration")
-    public String registrationPage(@ModelAttribute("user") UserRegisterDTO user) {
+    public String registrationPage(@ModelAttribute("user") UserDtoAdd user) {
         return "auth/registration";
     }
 
     @PostMapping("/registration")
-        public String performRegistration(@ModelAttribute("user") @Valid UserRegisterDTO user,
+        public String performRegistration(@ModelAttribute("user") @Valid UserDtoAdd user,
                                           BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors().forEach(e-> {
