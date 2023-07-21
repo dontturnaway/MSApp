@@ -27,7 +27,7 @@ public class SecurityConfig {
 
     @Bean
     public SecurityWebFilterChain springSecurityFilterChain(ServerHttpSecurity http) {
-        http.authorizeExchange()
+        http.csrf().disable().authorizeExchange()
                 .pathMatchers("/admin/**")
                 .hasRole("ADMIN")
                 .pathMatchers("/**").permitAll()
