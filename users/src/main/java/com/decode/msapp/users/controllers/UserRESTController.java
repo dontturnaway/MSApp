@@ -1,8 +1,12 @@
 package com.decode.msapp.users.controllers;
 
 import com.decode.msapp.users.DTO.*;
+import com.decode.msapp.users.exception.UserIsFraudsterExeption;
+import com.decode.msapp.users.exception.UserIsNotEligibleForFraudTestExeption;
 import com.decode.msapp.users.model.User;
+import com.decode.msapp.users.services.UserRegisterService;
 import com.decode.msapp.users.services.UserService;
+import com.decode.msapp.users.util.PersonValidator;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +30,9 @@ import java.util.stream.Collectors;
 public class UserRESTController {
 
     private final UserService userService;
+    private final UserRegisterService userRegisterService;
     private final ModelMapper mapper;
+    private final PersonValidator personValidator;
 
     @GetMapping()
     public ResponseEntity<List<UserDtoGet>> getAll() {
@@ -39,9 +45,6 @@ public class UserRESTController {
 
     @GetMapping("/{id}")
     public ResponseEntity<UserDtoGet> getById(@PathVariable("id") int id) {
-        if(id < 0) {
-            throw new ResponseStatusException(HttpStatus.NOT_ACCEPTABLE,"A new user cannot already have an ID");
-        }
         var person = userService.findById(id);
         return new ResponseEntity<>(mapper.map(person, UserDtoGet.class), HttpStatusCode.valueOf(200));
     }
@@ -50,12 +53,27 @@ public class UserRESTController {
     public ResponseEntity<String> create(@RequestBody @Valid UserDtoAdd userDTOAdd,
                                          BindingResult bindingResult)  {
         if (bindingResult.hasErrors()) {
-            log.info("Error in parameters, " + bindingResult);
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST,"Wrong parameters: " + bindingResult.getFieldErrors());
         }
         var userRegister=mapper.map(userDTOAdd, User.class);
         User user = userService.save(userRegister);
-        return ResponseEntity.created(URI.create("")).body("Userid created" + user.getId());
+        return ResponseEntity.created(URI.create("")).body("Userid created: " + user.getId());
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<String> register(@RequestBody @Valid UserDtoAdd userDTOAdd,
+                                         BindingResult bindingResult) {
+        personValidator.validate(userDTOAdd, bindingResult);
+        if (bindingResult.hasErrors()) {
+            return ResponseEntity.badRequest().body("Error in parameters " + bindingResult);
+        }
+        User userRegistered=mapper.map(userDTOAdd, User.class);
+        try {
+            userRegistered = userRegisterService.register(userRegistered);
+        } catch (UserIsNotEligibleForFraudTestExeption | UserIsFraudsterExeption e) {
+            return ResponseEntity.badRequest().body("User fraud check is negative, try again later");
+        }
+        return ResponseEntity.created(URI.create("")).body("Userid created" + userRegistered.getId());
     }
 
     @PutMapping()

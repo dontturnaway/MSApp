@@ -25,29 +25,18 @@ public class UserRegisterService {
     private String antiFraudServiceUrl;
 
     @Transactional
-    public void register(UserDtoAdd personRegisterDTO) throws Exception {
-
-        User user = User.builder()
-                .name(personRegisterDTO.getName())
-                .yearOfBirth(personRegisterDTO.getYearOfBirth())
-                .password(passwordEncoder.encode(personRegisterDTO.getPassword()))
-                .role("ROLE_USER")
-                .dateCreated(new java.sql.Timestamp(System.currentTimeMillis()))
-                .build();
+    public User register(User user) throws UserIsNotEligibleForFraudTestExeption, UserIsFraudsterExeption {
         userRepository.saveAndFlush(user); //get ID from DB
 
-        String userCheckUrl = antiFraudServiceUrl+"/fraudchecks/newcheck/"+ user.getId();
+        String userCheckUrl = antiFraudServiceUrl + "/fraudchecks/newcheck/" + user.getId();
         log.info("Checking user for fraud: " + userCheckUrl);
-        FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(
-                                            userCheckUrl, FraudCheckResponse.class);
+        FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(userCheckUrl, FraudCheckResponse.class);
+
         if (fraudCheckResponse == null)
             throw new UserIsNotEligibleForFraudTestExeption("Empty result received");
-
-        if (!(fraudCheckResponse.isFraudster())) {
-            userRepository.save(user);
-        } else {
+        if (fraudCheckResponse.isFraudster())
             throw new UserIsFraudsterExeption("User is fraudster");
-        }
-    }
 
+        return userRepository.save(user);
+    }
 }

@@ -11,7 +11,7 @@ public class UserIdDTO {
         this.id = Integer.parseInt(id);
     }
 
-    @Min(value = 1, message = "value should be natural number")
+    @Min(value = 4, message = "value should be natural number")
     private int id;
 
 }

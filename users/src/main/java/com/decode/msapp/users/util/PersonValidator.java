@@ -31,6 +31,6 @@ public class PersonValidator implements Validator {
         } catch (UsernameNotFoundException e) {
             return;
         }
-        errors.rejectValue("username", "" , "user with such name already exists");
+        errors.rejectValue("name", "" , "user with such name already exists");
     }
 }

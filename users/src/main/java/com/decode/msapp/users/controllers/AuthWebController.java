@@ -1,11 +1,13 @@
 package com.decode.msapp.users.controllers;
 
 import com.decode.msapp.users.DTO.UserDtoAdd;
+import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.services.UserRegisterService;
 import com.decode.msapp.users.util.PersonValidator;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,7 @@ public class AuthWebController {
 
     private final UserRegisterService userRegisterService;
     private final PersonValidator personValidator;
+    private final ModelMapper mapper;
 
     @GetMapping("/login")
     public String loginPage() {
@@ -35,7 +38,7 @@ public class AuthWebController {
     }
 
     @PostMapping("/registration")
-        public String performRegistration(@ModelAttribute("user") @Valid UserDtoAdd user,
+        public String performRegistration(@ModelAttribute("user") @Valid UserDtoAdd userDTOAdd,
                                           BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
             bindingResult.getFieldErrors().forEach(e-> {
@@ -43,8 +46,9 @@ public class AuthWebController {
             });
             return "/auth/registration";
         }
-        personValidator.validate(user, bindingResult);
-        userRegisterService.register(user);
+        personValidator.validate(userDTOAdd, bindingResult);
+        User userToRegister=mapper.map(userDTOAdd, User.class);
+        userRegisterService.register(userToRegister);
         return "redirect:/auth/login";
 
     }
