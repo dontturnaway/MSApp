@@ -1,0 +1,6 @@
+INSERT INTO NOTIFICATION_SERVICE.notifications (USER_ID, TIME_SENT, MESSAGE_BODY) VALUES(1, current_timestamp, 'test');
+INSERT INTO NOTIFICATION_SERVICE.notifications (USER_ID, TIME_SENT, MESSAGE_BODY) VALUES(2, current_timestamp, 'test');
+INSERT INTO NOTIFICATION_SERVICE.notifications (USER_ID, TIME_SENT, MESSAGE_BODY) VALUES(3, current_timestamp, 'test');
+INSERT INTO NOTIFICATION_SERVICE.notifications (USER_ID, TIME_SENT, MESSAGE_BODY) VALUES(4, current_timestamp, 'test');
+INSERT INTO NOTIFICATION_SERVICE.notifications (USER_ID, TIME_SENT, MESSAGE_BODY) VALUES(5, current_timestamp, 'test');
+INSERT INTO NOTIFICATION_SERVICE.notifications (USER_ID, TIME_SENT, MESSAGE_BODY) VALUES(6, current_timestamp, 'test');

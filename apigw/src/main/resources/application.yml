@@ -16,6 +16,10 @@ spring:
             uri: http://127.0.0.1:8082
             predicates:
               - Path=/fraudchecks/**
+          - id: notifications
+            uri: http://127.0.0.1:8083
+            predicates:
+              - Path=/notifications/**
   datasource:
     url: jdbc:postgresql://localhost:5432/dev
     username: dev
