@@ -1,6 +1,7 @@
 package com.decode.msapp.notification.controller;
 
 import com.decode.msapp.notification.dto.MessageDto;
+import com.decode.msapp.notification.dto.MessageIdDto;
 import com.decode.msapp.notification.dto.NotificationDto;
 import com.decode.msapp.notification.service.NotificationService;
 import jakarta.validation.Valid;
@@ -52,5 +53,14 @@ public class NotificationsController {
         return new ResponseEntity<>("Message sent", HttpStatusCode.valueOf(200));
     }
 
+    @DeleteMapping("/{id}")
+    ResponseEntity<String> deleteMessage(@Valid MessageIdDto id, BindingResult bindingResult) {
+        if (bindingResult.hasErrors())
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, bindingResult.toString());
+        if (notificationService.getById(id.getId()).isEmpty())
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Not exists");
+        notificationService.deleteById(id.getId());
+        return new ResponseEntity<>("Deleted successfully", HttpStatus.OK);
+    }
 
 }

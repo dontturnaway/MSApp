@@ -24,6 +24,8 @@ spring:
     url: jdbc:postgresql://localhost:5432/dev
     username: dev
     password: dev
+  flyway:
+    enabled: false
 logging:
   level:
     org.springframework.cloud.gateway: TRACE

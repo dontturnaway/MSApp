@@ -17,8 +17,8 @@ import java.util.Optional;
 @AllArgsConstructor
 public class NotificationService {
 
-    NotificationRepository notificationRepository;
-    RabbitMQMessageProducer rabbitMQMessageProducer;
+    private final NotificationRepository notificationRepository;
+    private final RabbitMQMessageProducer rabbitMQMessageProducer;
 
     public Notification save(Notification notification) {
         return notificationRepository.save(notification);
@@ -44,6 +44,10 @@ public class NotificationService {
                 .userId(1)
                 .build();
         save(notification);
+    }
+
+    public void deleteById(int id) {
+        notificationRepository.deleteById(id);
     }
 
 }

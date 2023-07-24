@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @AllArgsConstructor
 @RequestMapping("/auth")
-public class AuthWebController {
+public class Auth {
 
     private final UserRegisterService userRegisterService;
     private final UserValidator userValidator;

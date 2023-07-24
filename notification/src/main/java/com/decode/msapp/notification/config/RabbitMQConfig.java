@@ -1,6 +1,7 @@
 package com.decode.msapp.notification.config;
 
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -11,9 +12,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class RabbitMQConfig {
-
 
     private final ConnectionFactory connectionFactory;
 
@@ -49,10 +49,10 @@ public class RabbitMQConfig {
         return new TopicExchange("exchange");
     }
 
-    // Binding abovementioned queues to our exchange named "exchange"
+    // Binding above mentioned queues to our exchange named "exchange"
     // Messages with a key named "key" will be routed to queue "queue"
     @Bean
-    Binding binding1(Queue notificationQueue, TopicExchange exchange) {
+    Binding binding(Queue notificationQueue, TopicExchange exchange) {
         return BindingBuilder.bind(notificationQueue).to(exchange).with("notification");
     }
 

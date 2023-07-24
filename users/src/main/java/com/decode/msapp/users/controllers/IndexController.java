@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 @Slf4j
 @AllArgsConstructor
-public class IndexWebController {
+public class IndexController {
 
     private final AdminService adminService;
 

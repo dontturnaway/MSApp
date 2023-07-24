@@ -27,7 +27,7 @@ import java.util.stream.Collectors;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/users")
-public class UserRESTController {
+public class UserController {
 
     private final UserService userService;
     private final UserRegisterService userRegisterService;

@@ -1,6 +1,6 @@
 package com.decode.msapp.users;
 
-import com.decode.msapp.users.controllers.UserRESTController;
+import com.decode.msapp.users.controllers.UserController;
 import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.repositories.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,7 +19,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest(controllers = UserRESTController.class)
+@WebMvcTest(controllers = UserController.class)
 @Import({SecurityConfig.class})
 class UsersApplicationTestsIntegration {
 

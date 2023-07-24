@@ -1,17 +1,16 @@
-package com.decode.msapp.users.DTO;
-
+package com.decode.msapp.notification.dto;
 
 import jakarta.validation.constraints.Min;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
 
-@Getter @Setter
-public class UserIdDTO {
+@Data
+public class MessageIdDto {
 
-    public UserIdDTO(String id) {
+    public MessageIdDto(String id) {
         this.id = Integer.parseInt(id);
     }
 
     @Min(value = 1, message = "value should be natural number")
     private int id;
-
 }
