@@ -5,6 +5,7 @@ import com.decode.msapp.notification.model.Notification;
 import com.decode.msapp.notification.repository.NotificationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
+
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
@@ -16,8 +17,8 @@ public class NotificationService {
     private final NotificationRepository notificationRepository;
     private final RabbitMQMessageProducer rabbitMQMessageProducer;
 
-    public Notification save(Notification notification) {
-        return notificationRepository.save(notification);
+    public void save(Notification notification) {
+        notificationRepository.save(notification);
     }
 
     public List<Notification> findAll() {
@@ -38,7 +39,7 @@ public class NotificationService {
                 .messageBody(message)
                 .userId(1)
                 .build();
-        save(notification);
+        this.save(notification);
     }
 
     public void deleteById(int id) {

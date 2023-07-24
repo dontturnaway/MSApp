@@ -1,5 +1,6 @@
 package com.decode.msapp.notification.queue;
 
+import com.decode.msapp.notification.model.Notification;
 import com.decode.msapp.notification.service.NotificationService;
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
