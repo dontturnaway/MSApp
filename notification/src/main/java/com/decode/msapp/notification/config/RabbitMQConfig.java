@@ -1,6 +1,5 @@
 package com.decode.msapp.notification.config;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.amqp.core.*;
 import org.springframework.amqp.rabbit.config.SimpleRabbitListenerContainerFactory;
@@ -37,7 +36,7 @@ public class RabbitMQConfig {
         return new Jackson2JsonMessageConverter();
     }
 
-    // Creating queue with topic name "queue", durable - no save message
+    // Creating queue with topic name "queue", durable - save message on broker restart
     @Bean
     Queue notificationQueue() {
         return new Queue("notification", false);
