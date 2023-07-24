@@ -1,14 +1,10 @@
 package com.decode.msapp.notification.service;
 
 import com.decode.msapp.notification.config.RabbitMQMessageProducer;
-import com.decode.msapp.notification.model.Message;
 import com.decode.msapp.notification.model.Notification;
 import com.decode.msapp.notification.repository.NotificationRepository;
 import lombok.AllArgsConstructor;
-import org.springframework.amqp.rabbit.annotation.QueueBinding;
-import org.springframework.amqp.rabbit.annotation.RabbitListener;
 import org.springframework.stereotype.Service;
-
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
@@ -36,8 +32,7 @@ public class NotificationService {
         rabbitMQMessageProducer.publish(message, "exchange", "notification");
     }
 
-    @RabbitListener(queues = "notification")
-    public void processMessage(String message) {
+    public void persistMessage(String message) {
         Notification notification = Notification.builder()
                 .timeSent(new Timestamp(System.currentTimeMillis()))
                 .messageBody(message)

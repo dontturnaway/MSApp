@@ -11,4 +11,8 @@ spring:
     username: dev
     password: dev
     virtual-host: rabbitlocal
-#queue.name=teste #for setting here
+app:
+  rabbitmq:
+    notification-exchange: exchange
+    notification-queue: notification
+    notification-routingkey: notification

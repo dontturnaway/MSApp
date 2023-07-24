@@ -7,12 +7,22 @@ import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.support.converter.Jackson2JsonMessageConverter;
 import org.springframework.amqp.support.converter.MessageConverter;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @RequiredArgsConstructor
 public class RabbitMQConfig {
+
+    @Value("${app.rabbitmq.notification-exchange}")
+    private String echangeName;
+
+    @Value("${app.rabbitmq.notification-queue}")
+    private String queueName;
+
+    @Value("${app.rabbitmq.notification-routingkey}")
+    private String routingKeyName;
 
     private final ConnectionFactory connectionFactory;
 
@@ -36,23 +46,21 @@ public class RabbitMQConfig {
         return new Jackson2JsonMessageConverter();
     }
 
-    // Creating queue with topic name "queue", durable - save message on broker restart
-    @Bean
-    Queue notificationQueue() {
-        return new Queue("notification", false);
+    @Bean // Creating exchange named "exchange", to which we bind our queues
+    TopicExchange exchange() {
+        return new TopicExchange(echangeName);
     }
 
-    // Creating exchange named "exchange", to which we will bind our queues
-    @Bean
-    TopicExchange exchange() {
-        return new TopicExchange("exchange");
+    @Bean // Creating queue with topic name "queue", durable - save message on broker restart
+    Queue notificationQueue() {
+        return new Queue(queueName, false);
     }
 
     // Binding above mentioned queues to our exchange named "exchange"
     // Messages with a key named "key" will be routed to queue "queue"
     @Bean
     Binding binding(Queue notificationQueue, TopicExchange exchange) {
-        return BindingBuilder.bind(notificationQueue).to(exchange).with("notification");
+        return BindingBuilder.bind(notificationQueue).to(exchange).with(routingKeyName);
     }
 
 //    @Bean
