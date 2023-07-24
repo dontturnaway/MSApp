@@ -28,6 +28,7 @@ public class Notification {
     Timestamp timeSent;
 
     @Column(name = "message_body")
-    String messageBody;
-
+//    String messageBody;
+    @Embedded
+    Message messageBody;
 }

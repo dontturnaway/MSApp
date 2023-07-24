@@ -1,5 +1,6 @@
 package com.decode.msapp.notification.queue;
 
+import com.decode.msapp.notification.model.Message;
 import com.decode.msapp.notification.model.Notification;
 import com.decode.msapp.notification.service.NotificationService;
 import lombok.AllArgsConstructor;
@@ -16,7 +17,7 @@ public class NotificationListener {
     private final NotificationService notificationService;
 
     @RabbitListener(queues = "${app.rabbitmq.notification-queue}")
-    public void processMessage(String message) {
+    public void processMessage(Message message) {
         log.info("Consumed {} from queue", message);
         notificationService.persistMessage(message);
     }

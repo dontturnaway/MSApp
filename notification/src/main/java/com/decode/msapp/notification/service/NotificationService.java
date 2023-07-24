@@ -1,6 +1,7 @@
 package com.decode.msapp.notification.service;
 
 import com.decode.msapp.notification.config.RabbitMQMessageProducer;
+import com.decode.msapp.notification.model.Message;
 import com.decode.msapp.notification.model.Notification;
 import com.decode.msapp.notification.repository.NotificationRepository;
 import lombok.AllArgsConstructor;
@@ -33,7 +34,7 @@ public class NotificationService {
         rabbitMQMessageProducer.publish(message, "exchange", "notification");
     }
 
-    public void persistMessage(String message) {
+    public void persistMessage(Message message) {
         Notification notification = Notification.builder()
                 .timeSent(new Timestamp(System.currentTimeMillis()))
                 .messageBody(message)
