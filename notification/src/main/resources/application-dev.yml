@@ -5,4 +5,10 @@ spring:
       url: jdbc:postgresql://localhost:5432/notification_service
       username: notification_service
       password: dev
-
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: dev
+    password: dev
+    virtual-host: rabbitlocal
+#queue.name=teste #for setting here

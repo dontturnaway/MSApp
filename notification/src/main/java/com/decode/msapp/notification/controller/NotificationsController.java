@@ -3,6 +3,7 @@ package com.decode.msapp.notification.controller;
 import com.decode.msapp.notification.dto.MessageDto;
 import com.decode.msapp.notification.dto.NotificationDto;
 import com.decode.msapp.notification.service.NotificationService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 
 import org.modelmapper.ModelMapper;
@@ -10,10 +11,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -45,8 +44,11 @@ public class NotificationsController {
     }
 
     @PostMapping
-    public ResponseEntity<String> sendMessage(MessageDto message) {
-
+    public ResponseEntity<String> sendMessage(@RequestBody @Valid MessageDto message, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, bindingResult.toString());
+        }
+        notificationService.sendMessage(message.getMessageBody());
         return new ResponseEntity<>("Message sent", HttpStatusCode.valueOf(200));
     }
 

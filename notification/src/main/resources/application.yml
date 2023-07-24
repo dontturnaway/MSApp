@@ -62,3 +62,6 @@ management:
       probability: 1.0
 tracing: #jaeger
   url: http://localhost:4318/v1/traces
+server:
+  error:
+    include-message: always

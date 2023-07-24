@@ -84,9 +84,9 @@ configure([project(':apigw')]) {
     }
 }
 
-//configure([project(':notification')]) {
-//    dependencies {
-//        implementation 'org.springframework.boot:spring-boot-starter-amqp:3.1.2'
-//        testImplementation 'org.springframework.amqp:spring-rabbit-test:3.0.6'
-//    }
-//}
+configure([project(':notification')]) {
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-amqp:3.1.2'
+        testImplementation 'org.springframework.amqp:spring-rabbit-test:3.0.6'
+    }
+}
