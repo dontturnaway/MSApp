@@ -5,7 +5,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.Size;
 import lombok.*;
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Users")
@@ -36,7 +36,7 @@ public class User {
     private String role;
 
     @Column(name = "date_created", nullable = false, updatable = false, insertable = false)
-    Timestamp dateCreated;
+    LocalDateTime dateCreated;
 
     public User(String name, int yearOfBirth) {
         this.name = name;

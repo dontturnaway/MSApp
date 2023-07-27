@@ -6,7 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
+
 
 @Entity
 @Data
@@ -25,7 +26,7 @@ public class Notification {
     int userId;
 
     @Column(name = "time_sent")
-    Timestamp timeSent;
+    LocalDateTime timeSent;
 
     @Embedded
     @Column(name = "message_body")

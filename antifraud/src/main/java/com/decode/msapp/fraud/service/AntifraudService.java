@@ -17,7 +17,7 @@ public class AntifraudService {
     private final FraudCheckRepository fraudCheckRepository;
 
     public boolean checkByUserId(Integer userId) {
-        log.info("Checking for fraud for User ID= " + userId );
+        log.info("Checking for fraud for User ID={}", userId);
         return false;
     }
 

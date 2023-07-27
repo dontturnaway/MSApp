@@ -5,8 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 
 @Entity
@@ -26,7 +25,7 @@ public class FraudCheck {
     int userId;
 
     @Column(name = "date_checked")
-    Timestamp dateChecked;
+    LocalDateTime dateChecked;
 
     @Column(name = "is_fraudster")
     boolean isFraudster;

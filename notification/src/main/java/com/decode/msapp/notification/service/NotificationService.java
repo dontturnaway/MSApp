@@ -6,8 +6,7 @@ import com.decode.msapp.notification.model.Notification;
 import com.decode.msapp.notification.repository.NotificationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,7 +35,7 @@ public class NotificationService {
 
     public void persistMessage(Message message) {
         Notification notification = Notification.builder()
-                .timeSent(new Timestamp(System.currentTimeMillis()))
+                .timeSent(LocalDateTime.now())
                 .messageBody(message)
                 .userId(1)
                 .build();
