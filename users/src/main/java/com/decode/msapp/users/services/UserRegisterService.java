@@ -21,6 +21,7 @@ public class UserRegisterService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RestTemplate restTemplate;
+
     @Value("${app.serviceurl.antifraud}")
     private String antiFraudServiceUrl;
 
@@ -28,8 +29,8 @@ public class UserRegisterService {
     public User register(User user) throws UserIsNotEligibleForFraudTestExeption, UserIsFraudsterExeption {
         userRepository.saveAndFlush(user); //get ID from DB
 
-        String userCheckUrl = antiFraudServiceUrl + "newcheck/" + user.getId();
-        log.info("Checking user with id {} for fraud at URL {}", user.getId(), userCheckUrl);
+        String userCheckUrl = antiFraudServiceUrl + "/newcheck/" + user.getId();
+        log.info("Checking user with id={} for fraud at URL {}", user.getId(), userCheckUrl);
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(userCheckUrl, FraudCheckResponse.class);
 
         if (fraudCheckResponse == null)

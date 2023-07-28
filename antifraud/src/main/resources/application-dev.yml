@@ -5,4 +5,7 @@ spring:
       url: jdbc:postgresql://localhost:5432/antifraud_service
       username: antifraud_service
       password: dev
-
+app:
+  serviceurl:
+    users: "http://127.0.0.1:8080/users"
+    antifraud: "http://127.0.0.1:8080/antifraud"

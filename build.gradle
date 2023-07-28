@@ -90,3 +90,9 @@ configure([project(':notification')]) {
         testImplementation 'org.springframework.amqp:spring-rabbit-test:3.0.6'
     }
 }
+
+configure([project(':antifraud')]) {
+    dependencies {
+        implementation 'org.springframework:spring-webflux:6.0.11'
+    }
+}
