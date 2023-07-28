@@ -6,6 +6,8 @@ import com.decode.msapp.fraud.service.FraudCheckService;
 import com.decode.msapp.fraud.service.FraudReportingService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
@@ -20,24 +22,27 @@ public class AntifraudController {
     private final FraudReportingService fraudReportingService;
 
     @GetMapping("/checks")
-    public List<FraudCheck> getAllChecks() {
-        return fraudCheckService.getAll();
+    public ResponseEntity<List<FraudCheck>> getAllChecks() {
+        var result = fraudCheckService.getAll();
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
     @GetMapping("/{checkId}")
-    public FraudCheck getChecks(@PathVariable("checkId") Integer checkId) {
-        return fraudCheckService.getById(checkId);
+    public ResponseEntity<FraudCheck> getChecks(@PathVariable("checkId") Integer checkId) {
+        var result = fraudCheckService.getById(checkId);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
     @GetMapping("/newcheck/{userId}")
-    public boolean isFraudster(@PathVariable("userId") Integer userId) {
-        fraudCheckService.checkByUserId(userId);
-        return false;
+    public ResponseEntity<Boolean> isFraudster(@PathVariable("userId") Integer userId) {
+        var result = fraudCheckService.checkByUserId(userId);
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
     @GetMapping("/reporting")
-    public Map<User,Boolean> getUsersFraudReporing() {
-        return fraudReportingService.getAllUsersWithFraudStatus();
+    public ResponseEntity<Map<User,Boolean>> getUsersFraudReporing() {
+        var result = fraudReportingService.getAllUsersWithFraudStatus();
+        return ResponseEntity.status(HttpStatus.OK).body(result);
     }
 
 }
