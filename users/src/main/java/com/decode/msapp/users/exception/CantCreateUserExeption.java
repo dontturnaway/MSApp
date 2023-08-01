@@ -1,20 +1,14 @@
 package com.decode.msapp.users.exception;
 
-public class CantCreateUserExeption extends Exception {
-    private final static String errorCode = "IAA-001";
+import lombok.Getter;
+
+@Getter
+public class CantCreateUserExeption extends RuntimeException {
+    private static final String ERROR_CODE = "IAA-001";
+    private final String message;
 
     public CantCreateUserExeption(String message) {
-        this.message = message;
+        this.message = ERROR_CODE + message;
     }
 
-    private String message;
-
-    public String getErrorCode() {
-        return errorCode;
-    }
-
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }

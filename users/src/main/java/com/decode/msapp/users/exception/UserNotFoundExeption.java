@@ -1,20 +1,13 @@
 package com.decode.msapp.users.exception;
 
-public class UserNotFoundExeption extends Exception {
-    private final static String errorCode = "IAA-004";
+public class UserNotFoundExeption extends RuntimeException {
+    private static final String ERROR_CODE = "IAA-004: ";
+    private final String message;
 
     public UserNotFoundExeption(String message) {
-        this.message = message;
+        this.message = ERROR_CODE + message;
     }
 
-    private String message;
 
-    public String getErrorCode() {
-        return errorCode;
-    }
 
-    @Override
-    public String getMessage() {
-        return message;
-    }
 }

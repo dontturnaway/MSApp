@@ -1,9 +1,10 @@
 package com.decode.msapp.users.services;
 
 import com.decode.msapp.users.DTO.FraudCheckResponse;
-import com.decode.msapp.users.DTO.UserDtoAdd;
+import com.decode.msapp.users.exception.CantCheckUserForFraudExeption;
 import com.decode.msapp.users.exception.UserIsFraudsterExeption;
-import com.decode.msapp.users.exception.UserIsNotEligibleForFraudTestExeption;
+import com.decode.msapp.users.exception.UserNotFoundExeption;
+import com.decode.msapp.users.exception.WrongInputParameters;
 import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.repositories.UserRepository;
 import jakarta.transaction.Transactional;
@@ -26,7 +27,7 @@ public class UserRegisterService {
     private String antiFraudServiceUrl;
 
     @Transactional
-    public User register(User user) throws UserIsNotEligibleForFraudTestExeption, UserIsFraudsterExeption {
+    public User register(User user) throws WrongInputParameters, UserIsFraudsterExeption {
         userRepository.saveAndFlush(user); //get ID from DB
 
         String userCheckUrl = antiFraudServiceUrl + "/newcheck/" + user.getId();
@@ -34,7 +35,7 @@ public class UserRegisterService {
         FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(userCheckUrl, FraudCheckResponse.class);
 
         if (fraudCheckResponse == null)
-            throw new UserIsNotEligibleForFraudTestExeption("Empty result received");
+            throw new CantCheckUserForFraudExeption("Empty result received");
         if (fraudCheckResponse.isFraudster())
             throw new UserIsFraudsterExeption("User is fraudster");
 

@@ -2,7 +2,7 @@ package com.decode.msapp.users.controllers;
 
 import com.decode.msapp.users.DTO.*;
 import com.decode.msapp.users.exception.UserIsFraudsterExeption;
-import com.decode.msapp.users.exception.UserIsNotEligibleForFraudTestExeption;
+import com.decode.msapp.users.exception.WrongInputParameters;
 import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.services.UserRegisterService;
 import com.decode.msapp.users.services.UserService;
@@ -83,11 +83,7 @@ public class UserController {
             return ResponseEntity.badRequest().body("Error in parameters " + bindingResult);
         }
         User userRegistered=mapper.map(userDTOAdd, User.class);
-        try {
-            userRegistered = userRegisterService.register(userRegistered);
-        } catch (UserIsNotEligibleForFraudTestExeption | UserIsFraudsterExeption e) {
-            return ResponseEntity.badRequest().body("User fraud check is negative, try again later");
-        }
+        userRegistered = userRegisterService.register(userRegistered); //Controller advice will catch errors
         return ResponseEntity.created(URI.create("")).body("Userid created" + userRegistered.getId());
     }
 

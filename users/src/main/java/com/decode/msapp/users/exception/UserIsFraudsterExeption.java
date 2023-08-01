@@ -1,22 +1,16 @@
 package com.decode.msapp.users.exception;
 
-public class UserIsFraudsterExeption extends Exception {
+import lombok.Getter;
 
-        private final static String errorCode = "IAA-002";
+@Getter
+public class UserIsFraudsterExeption extends RuntimeException {
 
-        public UserIsFraudsterExeption(String message) {
-            this.message = message;
-        }
+    private static final String ERROR_CODE = "IAA-002";
+    private final String message;
 
-        private String message;
+    public UserIsFraudsterExeption(String message) {
+        this.message = ERROR_CODE + message;
+    }
 
-        public String getErrorCode() {
-            return errorCode;
-        }
-
-        @Override
-        public String getMessage() {
-            return message;
-        }
 }
 
