@@ -55,10 +55,10 @@ subprojects {
         testImplementation 'org.testcontainers:junit-jupiter'
         testImplementation 'org.testcontainers:postgresql'
         //Telemetry
-        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+        implementation 'org.springframework.boot:spring-boot-starter-actuator' //basic
         implementation 'io.micrometer:micrometer-registry-prometheus:1.11.0' //metrics
-        implementation 'io.micrometer:micrometer-tracing-bridge-otel'
-        implementation 'io.opentelemetry:opentelemetry-exporter-otlp'
+        implementation 'io.micrometer:micrometer-tracing-bridge-otel' //spans
+        implementation 'io.opentelemetry:opentelemetry-exporter-otlp' //spans
         //DTO autoconversion support
         implementation 'org.modelmapper:modelmapper:3.1.1'
     }
