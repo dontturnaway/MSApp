@@ -1,6 +1,6 @@
 package com.decode.msapp.users.config;
 
-import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
+//import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

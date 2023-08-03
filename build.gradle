@@ -55,10 +55,12 @@ subprojects {
         testImplementation 'org.testcontainers:junit-jupiter'
         testImplementation 'org.testcontainers:postgresql'
         //Telemetry
-        implementation 'org.springframework.boot:spring-boot-starter-actuator' //basic
+        implementation 'org.springframework.boot:spring-boot-starter-actuator'
+        implementation 'io.micrometer:micrometer-tracing-bridge-brave'
+        implementation 'io.zipkin.reporter2:zipkin-reporter-brave'
         implementation 'io.micrometer:micrometer-registry-prometheus:1.11.0' //metrics
-        implementation 'io.micrometer:micrometer-tracing-bridge-otel' //spans
-        implementation 'io.opentelemetry:opentelemetry-exporter-otlp' //spans
+        //implementation 'io.micrometer:micrometer-tracing-bridge-otel' //jaeger spans
+        //implementation 'io.opentelemetry:opentelemetry-exporter-otlp' //jaeger spans
         //DTO autoconversion support
         implementation 'org.modelmapper:modelmapper:3.1.1'
     }
@@ -70,7 +72,6 @@ subprojects {
 
 configure([project(':users'), project(':antifraud')]) {
     dependencies {
-        //Security
         implementation 'org.springframework.boot:spring-boot-starter-security'
         testImplementation 'org.springframework.security:spring-security-test'
     }
@@ -93,6 +94,7 @@ configure([project(':notification')]) {
 
 configure([project(':antifraud')]) {
     dependencies {
-        implementation 'org.springframework:spring-webflux:6.0.11'
+        implementation 'org.springframework.boot:spring-boot-starter-webflux'
+        testImplementation 'io.projectreactor:reactor-test'
     }
 }

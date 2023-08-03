@@ -23,6 +23,7 @@ public class AntifraudController {
 
     @GetMapping("/checks")
     public ResponseEntity<List<FraudCheck>> getAllChecks() {
+        log.info("All check list requested");
         var result = fraudCheckService.getAll();
         return ResponseEntity.status(HttpStatus.OK).body(result);
     }

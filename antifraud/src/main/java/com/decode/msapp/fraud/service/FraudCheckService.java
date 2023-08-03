@@ -25,7 +25,6 @@ public class FraudCheckService {
     public Map<User, Boolean> checkByUserIdCollection(List<User> users) {
         log.info("Checking for fraud for groups ID={}", users);
         return users.stream().collect(Collectors.toMap(o -> o, z -> false));
-        //return result;
     }
 
     public FraudCheck getById(Integer id) {

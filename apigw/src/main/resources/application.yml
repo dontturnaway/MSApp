@@ -41,3 +41,9 @@ management: #Enables access to http://127.0.0.1:8080/actuator/gateway/routes
     web:
       exposure:
         include: "*"
+  zipkin:
+    tracing:
+      endpoint: http://localhost:9411/api/v2/spans
+  tracing:
+    sampling:
+      probability: 1.0
