@@ -1,7 +1,9 @@
 package com.decode.msapp.fraud.config;
 
 import com.decode.msapp.fraud.client.UserClient;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,15 +13,18 @@ import org.springframework.web.service.invoker.HttpServiceProxyFactory;
 
 @Configuration
 @Slf4j
+@RequiredArgsConstructor
 public class WebClientConfig {
 
     @Value("${app.serviceurl.users}")
-    String userServiceUrl;
+    private String userServiceUrl;
+
+    private final WebClient.Builder webClientBuilder;
 
     @Bean
     public WebClient employeeWebClient() {
-        log.info("Accessing for users to URL: {}", userServiceUrl);
-        return WebClient.builder()
+        log.info("Setting up employeeWebClient for URL: {}", userServiceUrl);
+        return webClientBuilder
                 .baseUrl(userServiceUrl)
                 .build();
     }
