@@ -44,6 +44,9 @@ subprojects {
         //Thymeleaf
         implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
         implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+        //WebFlux
+        implementation 'org.springframework.boot:spring-boot-starter-webflux'
+        testImplementation 'io.projectreactor:reactor-test'
         //Lombok
         implementation 'org.projectlombok:lombok:1.18.26'
         compileOnly 'org.projectlombok:lombok:1.18.26'
@@ -92,9 +95,11 @@ configure([project(':notification')]) {
     }
 }
 
-configure([project(':antifraud')]) {
+configure([project(':users'), project(':apigw')]) {
     dependencies {
-        implementation 'org.springframework.boot:spring-boot-starter-webflux'
-        testImplementation 'io.projectreactor:reactor-test'
+        //JWT-related stuff
+        implementation 'io.jsonwebtoken:jjwt-api:0.11.5'
+        runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.5'
+        runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.5'
     }
 }

@@ -1,8 +1,8 @@
 package com.decode.msapp.users.config;
 
 //import io.opentelemetry.exporter.otlp.http.trace.OtlpHttpSpanExporter;
+
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
@@ -30,11 +30,11 @@ public class AppConfiguration {
     }
 */
 
-//
-//    @Autowired(required=false)
-//    @Bean
-//    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-//        return builder.build();
-//    }
-
+/*
+    @Autowired(required=false)
+    @Bean
+    public RestTemplate restTemplate(RestTemplateBuilder builder) {
+        return builder.build();
+    }
+*/
 }

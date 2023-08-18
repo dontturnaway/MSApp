@@ -1,0 +1,98 @@
+package com.decode.msapp.apigw.config;
+
+
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.cloud.gateway.filter.GatewayFilter;
+import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.http.server.reactive.ServerHttpResponse;
+import org.springframework.stereotype.Component;
+import org.springframework.web.server.ServerWebExchange;
+import reactor.core.publisher.Mono;
+
+import java.net.URI;
+
+import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.GATEWAY_REQUEST_URL_ATTR;
+import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.GATEWAY_ORIGINAL_REQUEST_URL_ATTR;
+import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR;
+import static org.springframework.cloud.gateway.support.ServerWebExchangeUtils.GATEWAY_PREDICATE_ROUTE_ATTR;
+
+@Slf4j
+@Component
+public class UserAuthenticationFilter extends AbstractGatewayFilterFactory<UserAuthenticationFilter.Config> {
+
+    public UserAuthenticationFilter() {
+        super(Config.class);
+    }
+
+    @Override
+    public GatewayFilter apply(Config config) {
+        return (exchange, chain) -> {
+            ServerHttpResponse response = exchange.getResponse();
+            response.setStatusCode(HttpStatus.UNAUTHORIZED);
+            return response.setComplete();
+        };
+    }
+
+
+
+//    @Override
+//    public GatewayFilter apply(Config config) {
+//        return (exchange, chain) -> {
+//            ServerHttpRequest request = exchange.getRequest();
+//            if (!request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
+//                return onError(exchange, "No Authorization header.", HttpStatus.UNAUTHORIZED);
+//            }
+//            return chain.filter(exchange);
+//
+//        };
+//    }
+//
+//    private Mono<Void> onError(ServerWebExchange exchange, String err, HttpStatus httpStatus) {
+//        ServerHttpResponse response = exchange.getResponse();
+//        response.setStatusCode(httpStatus);
+//        return response.setComplete();
+//    }
+
+//    @Override
+//    public GatewayFilter apply(Config config) {
+//
+//        return (exchange, chain) -> {
+//
+//            URI redirectUri = URI.create("http://127.0.0.1:8080/apigw/askauth");
+//            System.out.println(redirectUri.getHost());
+//
+//            ServerHttpRequest request = exchange
+//                    .getRequest()
+//                    .mutate()
+//                    .uri(redirectUri)
+//                    .method(HttpMethod.GET)
+//                    .build();
+//
+////            ServerHttpResponse response = exchange.getResponse();
+////            response.setStatusCode(HttpStatus.FORBIDDEN);
+////            response.setComplete();
+//
+//            ServerWebExchange mutatedExchange = exchange
+//                    .mutate()
+//                    .request(request)
+////                    .response(response)
+//                    .build();
+//            log.info(request.getURI().toString());
+//
+//            mutatedExchange.getAttributes().put(GATEWAY_REQUEST_URL_ATTR, request.getURI());
+//
+//            return chain.filter(mutatedExchange);
+//        };
+//    };
+
+
+    public static class Config {
+    }
+}
+
+

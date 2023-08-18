@@ -1,12 +1,11 @@
 package com.decode.msapp.users.controllers;
 
-import com.decode.msapp.users.DTO.*;
-import com.decode.msapp.users.exception.UserIsFraudsterExeption;
-import com.decode.msapp.users.exception.WrongInputParameters;
+import com.decode.msapp.users.DTO.UserDtoAdd;
+import com.decode.msapp.users.DTO.UserDtoGet;
+import com.decode.msapp.users.DTO.UserDtoUpdate;
+import com.decode.msapp.users.DTO.UserIdDTO;
 import com.decode.msapp.users.model.User;
-import com.decode.msapp.users.services.UserRegisterService;
 import com.decode.msapp.users.services.UserService;
-import com.decode.msapp.users.util.UserValidator;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -30,9 +29,7 @@ import java.util.stream.Collectors;
 public class UserController {
 
     private final UserService userService;
-    private final UserRegisterService userRegisterService;
     private final ModelMapper mapper;
-    private final UserValidator userValidator;
 
     @GetMapping()
     public ResponseEntity<List<UserDtoGet>> getAll() {
@@ -73,18 +70,6 @@ public class UserController {
         var userRegister=mapper.map(userDTOAdd, User.class);
         User user = userService.save(userRegister);
         return ResponseEntity.created(URI.create("")).body("Userid created: " + user.getId());
-    }
-
-    @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody @Valid UserDtoAdd userDTOAdd,
-                                         BindingResult bindingResult) {
-        userValidator.validate(userDTOAdd, bindingResult);
-        if (bindingResult.hasErrors()) {
-            return ResponseEntity.badRequest().body("Error in parameters " + bindingResult);
-        }
-        User userRegistered=mapper.map(userDTOAdd, User.class);
-        userRegistered = userRegisterService.register(userRegistered); //Controller advice will catch errors
-        return ResponseEntity.created(URI.create("")).body("Userid created" + userRegistered.getId());
     }
 
     @PutMapping()

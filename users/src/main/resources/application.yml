@@ -23,7 +23,8 @@ spring:
 logging:
   file:
     name: ./logs/mytest.log
-  #level:
+  level:
+    org.springframework.security: TRACE
     #root: "INFO"
     #org.springframework: "INFO"
     #com.test.myapp.controllers: "ERROR"

@@ -1,5 +1,6 @@
 package com.decode.msapp.users;
 
+import com.decode.msapp.users.config.SecurityConfig;
 import com.decode.msapp.users.controllers.UserController;
 import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.repositories.UserRepository;

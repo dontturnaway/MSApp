@@ -1,6 +1,6 @@
-package com.decode.msapp.users.controllers;
+package com.decode.msapp.users.controllers.web;
 
-import com.decode.msapp.users.security.UserDetailsImpl;
+import com.decode.msapp.users.model.UserDetailsImpl;
 import com.decode.msapp.users.services.AdminService;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 @Slf4j
 @AllArgsConstructor
-public class WebViewController {
+public class UserInfoWebController {
 
     private final AdminService adminService;
 
@@ -25,7 +25,7 @@ public class WebViewController {
     public String showUserInfo() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetailsImpl userDetailsImpl = (UserDetailsImpl) authentication.getPrincipal();
-        log.info("User defails fetched " + userDetailsImpl.getPerson().getName());
+        log.info("User defails fetched " + userDetailsImpl.getUserObject().getName());
         return "hello";
     }
 

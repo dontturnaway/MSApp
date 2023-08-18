@@ -12,14 +12,22 @@ spring:
             uri: http://127.0.0.1:8081
             predicates:
               - Path=/users/**
+            filters:
+              - UserAuthenticationFilter
+
           - id: fraudchecks
             uri: http://127.0.0.1:8082
             predicates:
               - Path=/antifraud/**
+            filters:
+              - UserAuthenticationFilter
+
           - id: notifications
             uri: http://127.0.0.1:8083
             predicates:
               - Path=/notifications/**
+            filters:
+              - UserAuthenticationFilter
   datasource:
     url: jdbc:postgresql://localhost:5432/dev
     username: dev
@@ -41,9 +49,11 @@ management: #Enables access to http://127.0.0.1:8080/actuator/gateway/routes
     web:
       exposure:
         include: "*"
-  zipkin:
-    tracing:
-      endpoint: http://localhost:9411/api/v2/spans
-  tracing:
-    sampling:
-      probability: 1.0
+#  zipkin:
+#    tracing:
+#      endpoint: http://localhost:9411/api/v2/spans
+#  tracing:
+#    sampling:
+#      probability: 1.0
+app:
+  baseurl: "http://127.0.0.1:8080"

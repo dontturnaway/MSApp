@@ -1,4 +1,4 @@
-package com.decode.msapp.users.controllers.old;
+package com.decode.msapp.users.controllers.web;
 
 import com.decode.msapp.users.DTO.UserDtoAdd;
 import com.decode.msapp.users.model.User;

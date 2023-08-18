@@ -1,6 +1,5 @@
-package com.decode.msapp.users.security;
+package com.decode.msapp.users.model;
 
-import com.decode.msapp.users.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -50,8 +49,8 @@ public class UserDetailsImpl implements UserDetails {
         return true;
     }
 
-    // Нужно, чтобы получать данные аутентифицированного пользователя
-    public User getPerson() {
+    // To get authenticated user's data
+    public User getUserObject() {
         return this.user;
     }
 }

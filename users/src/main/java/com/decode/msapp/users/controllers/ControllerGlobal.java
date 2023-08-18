@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 @Slf4j
-public class GlobalExceptionController {
+public class ControllerGlobal {
     @ExceptionHandler(UserNotFoundExeption.class)
     public ResponseEntity<String> handleCustomException(final CantCheckUserForFraudExeption ex) {
         log.info("ControllerAdvice intercepted exception");
@@ -23,5 +23,4 @@ public class GlobalExceptionController {
         log.info("ControllerAdvice intercepted exception");
         return new ResponseEntity<>("User is fraudster", HttpStatus.FORBIDDEN);
     }
-
 }

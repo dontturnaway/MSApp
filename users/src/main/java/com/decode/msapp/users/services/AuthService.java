@@ -1,9 +1,9 @@
 package com.decode.msapp.users.services;
 
-import com.decode.msapp.users.DTO.FraudCheckResponse;
+
+import com.decode.msapp.users.DTO.UserFraudCheckDTO;
 import com.decode.msapp.users.exception.CantCheckUserForFraudExeption;
 import com.decode.msapp.users.exception.UserIsFraudsterExeption;
-import com.decode.msapp.users.exception.UserNotFoundExeption;
 import com.decode.msapp.users.exception.WrongInputParameters;
 import com.decode.msapp.users.model.User;
 import com.decode.msapp.users.repositories.UserRepository;
@@ -18,10 +18,11 @@ import org.springframework.web.client.RestTemplate;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class UserRegisterService {
+public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RestTemplate restTemplate;
+    private final JwtService jwtService;
 
     @Value("${app.serviceurl.antifraud}")
     private String antiFraudServiceUrl;
@@ -32,13 +33,22 @@ public class UserRegisterService {
 
         String userCheckUrl = antiFraudServiceUrl + "/newcheck/" + user.getId();
         log.info("Checking user with id={} for fraud at URL {}", user.getId(), userCheckUrl);
-        FraudCheckResponse fraudCheckResponse = restTemplate.getForObject(userCheckUrl, FraudCheckResponse.class);
+        UserFraudCheckDTO fraudCheckResponse = restTemplate.getForObject(userCheckUrl, UserFraudCheckDTO.class);
 
         if (fraudCheckResponse == null)
             throw new CantCheckUserForFraudExeption("Empty result received");
         if (fraudCheckResponse.isFraudster())
             throw new UserIsFraudsterExeption("User is fraudster");
-
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
+
+    public String generateToken(String userName, String userRole) {
+        return jwtService.generateToken(userName, userRole);
+    }
+
+    public void validateToken(String token) {
+        jwtService.validateToken(token);
+    }
+
 }
